@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\StockMarket\\StockMarket\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
+      "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
       "projectName": "StockMarket.AdminService",
-      "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\StockMarket\\StockMarket\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
+      "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
       "packagesPath": "C:\\Users\\c2dotnet06\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\c2dotnet06\\source\\repos\\StockMarket\\StockMarket\\StockMarket.AdminService\\obj\\",
+      "outputPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.AdminService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

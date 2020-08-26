@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1JAm118t5HhgU6wd9B8g1k3I6GHktYIMkjAi8ZgLaDdj0JMzrjFpvMqkT9r47KIZFnYO/k8I/0h2chTQhsIvXw==",
+  "dgSpecHash": "HB/eJ5XIw3X+yDFR/BkGNpjhZIcq9r8fmrUNPIy7U9aJ7xV48qbUhCWTI467v3UcvRahU5sYtiiVfXF2XNnCaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\c2dotnet06\\source\\repos\\StockMarket\\StockMarket\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
+  "projectFilePath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.AdminService\\StockMarket.AdminService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\c2dotnet06\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
