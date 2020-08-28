@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pT9S5N4loQua63ocbfwuV4tPFzvKTbNTqvCNl7G/vwPaIMVU00/jYG4FfCm9Vy1PX2rBGXk+uuq0L2HRpHgNlA==",
+  "dgSpecHash": "MRqAIp9pSx6+3cQX7c9u314p0Zk9NgrpHH34c1T505wwpqAZQBH6ujfhcFhHhiSxHIqaH9f6hrzZuWmiAddUaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
+  "projectFilePath": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\c2dotnet06\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\c2dotnet06\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
