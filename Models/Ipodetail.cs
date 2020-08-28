@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    class Ipodetail
+    public class Ipodetail
     {
-        public int Id { get; set; }
-        public string Companyname { get; set; }
-        public int Stockexchange { get; set; }
+        [Key]
+        public long Id { get; set; }
+        [Required]
+        public virtual Company Company { get; set; }
+        public virtual StockExchange Stockexchange { get; set; }
         public float Pricepershare { get; set; }
         public int Totalnumberofshares { get; set; }
         public string Opendatetime { get; set; }

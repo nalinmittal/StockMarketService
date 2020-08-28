@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj": {}
+    "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj": {
+    "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
-        "projectName": "Models",
-        "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
+        "projectName": "StockMarket.UserService",
+        "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
         "packagesPath": "C:\\Users\\c2dotnet06\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\Models\\obj\\",
+        "outputPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -41,12 +41,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -64,6 +58,9 @@
             }
           ],
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

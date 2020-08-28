@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Models
 {
-    class StockExchange
+    public class StockExchange
     {
-        public int Id { get; set; }
+        [Key]
+        public long Id { get; set; }
+        [Required]
         public string Stockexchange { get; set; }
         public string Brief { get; set; }
         public string Contactaddress { get; set; }
