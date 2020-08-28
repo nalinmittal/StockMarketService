@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarket.AdminService", "StockMarket.AdminService\StockMarket.AdminService.csproj", "{D8FE9716-F963-4388-958F-A6698431E894}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{A0610E6B-6B6C-4C43-BFF6-9099A3A33F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{A0610E6B-6B6C-4C43-BFF6-9099A3A33F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{9BA72CC7-0FAC-43D9-AF65-6A57A2C8BF3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A0610E6B-6B6C-4C43-BFF6-9099A3A33F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0610E6B-6B6C-4C43-BFF6-9099A3A33F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0610E6B-6B6C-4C43-BFF6-9099A3A33F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA72CC7-0FAC-43D9-AF65-6A57A2C8BF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA72CC7-0FAC-43D9-AF65-6A57A2C8BF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA72CC7-0FAC-43D9-AF65-6A57A2C8BF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA72CC7-0FAC-43D9-AF65-6A57A2C8BF3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
