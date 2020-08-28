@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\UserService\\UserService.csproj",
-      "projectName": "UserService",
-      "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\UserService\\UserService.csproj",
+      "projectUniqueName": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\UserService\\StockMarket.UserService.csproj",
+      "projectName": "StockMarket.UserService",
+      "projectPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\UserService\\StockMarket.UserService.csproj",
       "packagesPath": "C:\\Users\\c2dotnet06\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\c2dotnet06\\source\\repos\\nalinmittal\\StockMarketService\\UserService\\obj\\",
       "projectStyle": "PackageReference",
