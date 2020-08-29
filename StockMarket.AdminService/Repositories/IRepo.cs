@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    interface IRepo<T>
+    public interface IRepo<T>
     {
         bool Add(T entity);
         bool Update(T entity);

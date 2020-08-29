@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Models;
+using StockMarket.AdminService.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,18 +15,25 @@ namespace StockMarket.AdminService.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
+        IRepo<Company> repository;
+
+        public CompanyController(IRepo<Company> repository)
+        {
+            this.repository = repository;
+        }
+
         // GET: api/<CompanyController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Company> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.repository.Get();
         }
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Company Get(int id)
         {
-            return "value";
+            return this.repository.Get(id);
         }
 
         // POST api/<CompanyController>

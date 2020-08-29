@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Models
 {
-    class StockMarketContext : DbContext
+    public class StockMarketContext : DbContext
     {
         public StockMarketContext([NotNullAttribute] DbContextOptions options) : base(options)
         {

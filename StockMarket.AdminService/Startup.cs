@@ -29,7 +29,7 @@ namespace StockMarket.AdminService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CompanyContext>(options => 
+            services.AddDbContext<StockMarketContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<IRepo<Company>, CompanyRepo>();
