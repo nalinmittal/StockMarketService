@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj": {}
+    "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj": {
+    "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\c2dotnet06\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\Models\\obj\\",
+        "projectPath": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\c2dotnet05\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\c2dotnet06\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\c2dotnet05\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

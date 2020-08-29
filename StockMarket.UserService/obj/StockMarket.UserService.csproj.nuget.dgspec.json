@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {}
+    "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {
+    "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
+        "projectUniqueName": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
         "projectName": "StockMarket.UserService",
-        "projectPath": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
-        "packagesPath": "C:\\Users\\c2dotnet06\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\c2dotnet06\\Source\\Repos\\nalinmittal\\StockMarketService\\StockMarket.UserService\\obj\\",
+        "projectPath": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\StockMarket.UserService\\StockMarket.UserService.csproj",
+        "packagesPath": "C:\\Users\\c2dotnet05\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\c2dotnet05\\Source\\Repos\\StockMarketService\\StockMarket.UserService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\c2dotnet06\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\c2dotnet05\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
