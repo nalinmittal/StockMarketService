@@ -3,3 +3,12 @@ C:\Users\c2dotnet06\source\repos\nalinmittal\StockMarketService\Models\bin\Debug
 C:\Users\c2dotnet06\source\repos\nalinmittal\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.csprojAssemblyReference.cache
 C:\Users\c2dotnet06\source\repos\nalinmittal\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
 C:\Users\c2dotnet06\source\repos\nalinmittal\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\bin\Debug\netcoreapp3.1\Models.dll
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\bin\Debug\netcoreapp3.1\Models.pdb
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.csprojAssemblyReference.cache
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.dll
+C:\Users\c2dotnet05\Source\Repos\StockMarketService\Models\obj\Debug\netcoreapp3.1\Models.pdb

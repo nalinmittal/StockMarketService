@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Models;
+using StockMarket.AdminService.Repositories;
 
 namespace StockMarket.AdminService
 {
@@ -29,6 +32,7 @@ namespace StockMarket.AdminService
             services.AddDbContext<CompanyContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
+            services.AddScoped<IRepo<Company>, CompanyRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
