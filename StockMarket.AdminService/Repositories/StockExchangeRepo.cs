@@ -7,34 +7,33 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class CompanyRepo : IRepo<Company>
+    public class StockExchangeRepo : IRepo<StockExchange>
     {
         private StockMarketContext context;
 
-        public CompanyRepo(StockMarketContext context)
+        public StockExchangeRepo(StockMarketContext context)
         {
             this.context = context;
         }
-
-        public bool Add(Company entity)
+        public bool Add(StockExchange entity)
         {
             try
             {
                 this.context.Add(entity);
                 int updates = context.SaveChanges();
-                if(updates > 0)
+                if (updates > 0)
                 {
                     return true;
                 }
                 return false;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
         }
 
-        public bool Delete(Company entity)
+        public bool Delete(StockExchange entity)
         {
             try
             {
@@ -52,31 +51,31 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public IEnumerable<Company> Get()
+        public IEnumerable<StockExchange> Get()
         {
-            var companies = this.context.Companies;
-            return companies;
+            var exchanges = this.context.StockExchanges;
+            return exchanges;
         }
 
-        public Company Get(object key)
+        public StockExchange Get(object key)
         {
-            var company = this.context.Companies.Find(key);
-            return company;
+            var exchange = this.context.StockExchanges.Find(key);
+            return exchange;
         }
 
-        public bool Update(Company entity)
+        public bool Update(StockExchange entity)
         {
             try
             {
                 this.context.Entry(entity).State = EntityState.Modified;
                 int updates = context.SaveChanges();
-                if(updates > 0)
+                if (updates > 0)
                 {
                     return true;
                 }
                 return false;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }

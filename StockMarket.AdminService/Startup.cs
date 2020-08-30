@@ -33,6 +33,7 @@ namespace StockMarket.AdminService
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<IRepo<Company>, CompanyRepo>();
+            services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

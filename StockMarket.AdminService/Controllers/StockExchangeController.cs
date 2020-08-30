@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Models;
 using StockMarket.AdminService.Repositories;
 
@@ -14,62 +12,58 @@ namespace StockMarket.AdminService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class StockExchangeController : ControllerBase
     {
-        IRepo<Company> repository;
+        IRepo<StockExchange> repository;
 
-        public CompanyController(IRepo<Company> repository)
+        public StockExchangeController(IRepo<StockExchange> repository)
         {
             this.repository = repository;
         }
 
-        // GET: api/<CompanyController>
         [HttpGet]
-        public IEnumerable<Company> Get()
+        public IEnumerable<StockExchange> Get()
         {
             return this.repository.Get();
         }
 
-        // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public Company Get(int id)
+        public StockExchange Get(int id)
         {
             return this.repository.Get(id);
         }
 
-        // POST api/<CompanyController>
         [HttpPost]
-        public IActionResult Post([FromForm] Company company)
+        public IActionResult Post([FromForm] StockExchange exchange)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var isAdded = this.repository.Add(company);
-                if(isAdded)
+                var isAdded = this.repository.Add(exchange);
+                if (isAdded)
                 {
-                    return Created("Company created.", company);
+                    return Created("Stock Exchange added.", exchange);
                 }
             }
             return BadRequest(ModelState);
         }
 
-        // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Company company)
+        public IActionResult Put(int id, [FromForm] StockExchange exchange)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if(id==company.Id)
+                if (id == exchange.Id)
                 {
                     var existing = this.repository.Get(id);
-                    if(existing==null)
+                    if (existing == null)
                     {
                         return NotFound();
                     }
 
-                    var isUpdated = this.repository.Update(company);
-                    if(isUpdated)
+                    var isUpdated = this.repository.Update(exchange);
+                    if (isUpdated)
                     {
-                        return Ok(company);
+                        return Ok(exchange);
                     }
                 }
             }
@@ -80,15 +74,15 @@ namespace StockMarket.AdminService.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var company = this.repository.Get(id);
-            if(company==null)
+            var exchange = this.repository.Get(id);
+            if (exchange == null)
             {
                 return NotFound();
             }
-            var isDeleted = this.repository.Delete(company);
-            if(isDeleted)
+            var isDeleted = this.repository.Delete(exchange);
+            if (isDeleted)
             {
-                return Ok("Company deleted succesfully");
+                return Ok("Stock Exchange deleted succesfully");
             }
             return StatusCode(500, "Internal Server Error");
         }
