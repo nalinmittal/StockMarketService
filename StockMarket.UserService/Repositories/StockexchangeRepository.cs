@@ -1,25 +1,25 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Models;
 
 namespace StockMarket.UserService.Repositories
 {
-    public class CompanyRepository : IRepository<Company>
+    public class StockexchangeRepository : IRepository<StockExchange>
     {
         private StockMarketContext context;
 
-        public CompanyRepository(StockMarketContext context)
+        public StockexchangeRepository(StockMarketContext context)
         {
             this.context = context;
         }
-        public bool Add(Company entity)
+        public bool Add(StockExchange entity)
         {
             try
             {
                 //insert 
-                context.Companies.Add(entity);
+                context.StockExchanges.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -33,23 +33,23 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public bool Delete(Company entity)
+        public bool Delete(StockExchange entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Company> Get()
+        public IEnumerable<StockExchange> Get()
         {
-            var companies = context.Companies;
-            return companies;
+            var stockexchanges = context.StockExchanges;
+            return stockexchanges;
         }
 
-        public Company Get(object key)
+        public StockExchange Get(object key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Company entity)
+        public bool Update(StockExchange entity)
         {
             throw new NotImplementedException();
         }

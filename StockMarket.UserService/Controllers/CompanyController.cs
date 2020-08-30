@@ -9,87 +9,39 @@ using StockMarket.UserService.Repositories;
 
 namespace StockMarket.UserService.Controllers
 {
-    public class CompanyController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CompanyController : ControllerBase
     {
         private IRepository<Company> repository;
-
         public CompanyController(IRepository<Company> repository)
         {
             this.repository = repository;
         }
-        // GET: CompanyController
-        public ActionResult Index()
+
+        [HttpGet]
+        public IEnumerable<Company> Get()
         {
-            return View();
+            return repository.Get();
         }
 
-        // GET: CompanyController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CompanyController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CompanyController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Post([FromForm] Company company)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var isAdded = repository.Add(company);
+                if (isAdded)
+                {
+                    return Created("company", company);
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+
+            return BadRequest(ModelState);
+
         }
 
-        // GET: CompanyController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CompanyController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CompanyController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CompanyController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }
