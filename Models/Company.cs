@@ -18,7 +18,7 @@ namespace Models
         public string Ceo { get; set; }
         public string Boardofdirectors { get; set; }
         public virtual ICollection<StockExchange> Stockexchanges { get; set; }
-        public Sector Sector { get; set; }
+        public virtual Sector Sector { get; set; }
         public string Brief { get; set; }
         public string Stockcodes { get; set; }
 

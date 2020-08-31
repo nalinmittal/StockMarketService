@@ -3,7 +3,6 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
@@ -33,23 +32,23 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public bool Delete(StockExchange entity)
-        {
-            try
-            {
-                this.context.Remove(entity);
-                int updates = context.SaveChanges();
-                if (updates > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+        //public bool Delete(StockExchange entity)
+        //{
+        //    try
+        //    {
+        //        this.context.Remove(entity);
+        //        int updates = context.SaveChanges();
+        //        if (updates > 0)
+        //        {
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public IEnumerable<StockExchange> Get()
         {
@@ -63,22 +62,28 @@ namespace StockMarket.AdminService.Repositories
             return exchange;
         }
 
-        public bool Update(StockExchange entity)
+        //public bool Update(StockExchange entity)
+        //{
+        //    try
+        //    {
+        //        this.context.Entry(entity).State = EntityState.Modified;
+        //        int updates = context.SaveChanges();
+        //        if (updates > 0)
+        //        {
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        IEnumerable<StockExchange> IRepo<StockExchange>.GetMatching(string name)
         {
-            try
-            {
-                this.context.Entry(entity).State = EntityState.Modified;
-                int updates = context.SaveChanges();
-                if (updates > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var exchanges = this.context.StockExchanges.Where(c => c.Stockexchange.Contains(name));
+            return exchanges;
         }
     }
 }

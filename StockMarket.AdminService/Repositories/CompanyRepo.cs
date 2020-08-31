@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class CompanyRepo : IRepo<Company>
+    public class CompanyRepo : ICompanyRepo<Company>
     {
         private StockMarketContext context;
 
@@ -62,6 +62,12 @@ namespace StockMarket.AdminService.Repositories
         {
             var company = this.context.Companies.Find(key);
             return company;
+        }
+
+        public IEnumerable<Company> GetMatching(string name)
+        {
+            var companies = this.context.Companies.Where(c => c.Companyname.Contains(name));
+            return companies;
         }
 
         public bool Update(Company entity)

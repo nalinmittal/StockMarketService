@@ -32,7 +32,7 @@ namespace StockMarket.AdminService
             services.AddDbContext<StockMarketContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
-            services.AddScoped<IRepo<Company>, CompanyRepo>();
+            services.AddScoped<ICompanyRepo<Company>, CompanyRepo>();
             services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
         }
 

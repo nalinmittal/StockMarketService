@@ -10,7 +10,7 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(StockMarketContext))]
-    [Migration("20200830115805_InitialCreateContext")]
+    [Migration("20200830165908_InitialCreateContext")]
     partial class InitialCreateContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -16,9 +16,9 @@ namespace StockMarket.AdminService.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        IRepo<Company> repository;
+        ICompanyRepo<Company> repository;
 
-        public CompanyController(IRepo<Company> repository)
+        public CompanyController(ICompanyRepo<Company> repository)
         {
             this.repository = repository;
         }
@@ -35,6 +35,12 @@ namespace StockMarket.AdminService.Controllers
         public Company Get(int id)
         {
             return this.repository.Get(id);
+        }
+
+        [HttpGet("{name}")]
+        public IEnumerable<Company> Get(string companyName)
+        {
+            return this.repository.GetMatching(companyName);
         }
 
         // POST api/<CompanyController>

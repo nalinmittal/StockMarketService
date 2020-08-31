@@ -33,6 +33,12 @@ namespace StockMarket.AdminService.Controllers
             return this.repository.Get(id);
         }
 
+        [HttpGet("{name}")]
+        public IEnumerable<StockExchange> Get(string exchangeName)
+        {
+            return this.repository.GetMatching(exchangeName);
+        }
+
         [HttpPost]
         public IActionResult Post([FromForm] StockExchange exchange)
         {
@@ -47,44 +53,44 @@ namespace StockMarket.AdminService.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] StockExchange exchange)
-        {
-            if (ModelState.IsValid)
-            {
-                if (id == exchange.Id)
-                {
-                    var existing = this.repository.Get(id);
-                    if (existing == null)
-                    {
-                        return NotFound();
-                    }
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, [FromForm] StockExchange exchange)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (id == exchange.Id)
+        //        {
+        //            var existing = this.repository.Get(id);
+        //            if (existing == null)
+        //            {
+        //                return NotFound();
+        //            }
 
-                    var isUpdated = this.repository.Update(exchange);
-                    if (isUpdated)
-                    {
-                        return Ok(exchange);
-                    }
-                }
-            }
-            return BadRequest(ModelState);
-        }
+        //            var isUpdated = this.repository.Update(exchange);
+        //            if (isUpdated)
+        //            {
+        //                return Ok(exchange);
+        //            }
+        //        }
+        //    }
+        //    return BadRequest(ModelState);
+        //}
 
         // DELETE api/<CompanyController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var exchange = this.repository.Get(id);
-            if (exchange == null)
-            {
-                return NotFound();
-            }
-            var isDeleted = this.repository.Delete(exchange);
-            if (isDeleted)
-            {
-                return Ok("Stock Exchange deleted succesfully");
-            }
-            return StatusCode(500, "Internal Server Error");
-        }
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var exchange = this.repository.Get(id);
+        //    if (exchange == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var isDeleted = this.repository.Delete(exchange);
+        //    if (isDeleted)
+        //    {
+        //        return Ok("Stock Exchange deleted succesfully");
+        //    }
+        //    return StatusCode(500, "Internal Server Error");
+        //}
     }
 }
