@@ -21,5 +21,6 @@ namespace StockMarket.AdminService.Data
 
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<StockExchange> StockExchanges { get; set; }
+        public virtual DbSet<Ipodetail> Ipos { get; set; }
     }
 }

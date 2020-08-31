@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
+using StockMarket.AdminService.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace StockMarket.AdminService.Repositories
 {
     public class StockExchangeRepo : IRepo<StockExchange>
     {
-        private StockMarketContext context;
+        private AdminContext context;
 
-        public StockExchangeRepo(StockMarketContext context)
+        public StockExchangeRepo(AdminContext context)
         {
             this.context = context;
         }

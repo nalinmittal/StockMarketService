@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Models;
+using StockMarket.AdminService.Data;
 using StockMarket.AdminService.Repositories;
 
 namespace StockMarket.AdminService
@@ -29,11 +30,12 @@ namespace StockMarket.AdminService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StockMarketContext>(options => 
+            services.AddDbContext<AdminContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<ICompanyRepo<Company>, CompanyRepo>();
             services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
+            services.AddScoped<IRepo<Ipodetail>, IpoRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
