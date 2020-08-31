@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using StockMarket.UserService.Data;
 
 namespace StockMarket.UserService.Repositories
 {
