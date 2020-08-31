@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace StockMarket.UserService.Repositories
@@ -14,12 +15,12 @@ namespace StockMarket.UserService.Repositories
         {
             this.context = context;
         }
+
         public bool Add(Company entity)
         {
             try
             {
-                //insert 
-                context.Companies.Add(entity);
+                this.context.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -35,23 +36,50 @@ namespace StockMarket.UserService.Repositories
 
         public bool Delete(Company entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Remove(entity);
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<Company> Get()
         {
-            var companies = context.Companies;
+            var companies = this.context.Companies;
             return companies;
         }
 
         public Company Get(object key)
         {
-            throw new NotImplementedException();
+            var company = this.context.Companies.Find(key);
+            return company;
         }
 
         public bool Update(Company entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Entry(entity).State = EntityState.Modified;
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
