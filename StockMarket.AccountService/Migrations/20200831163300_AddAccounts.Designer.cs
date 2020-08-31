@@ -9,7 +9,7 @@ using StockMarket.AccountService.Models;
 namespace StockMarket.AccountService.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20200831162747_AddAccounts")]
+    [Migration("20200831163300_AddAccounts")]
     partial class AddAccounts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace StockMarket.AccountService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccountUsers");
+                    b.ToTable("AccountsUsers");
                 });
 #pragma warning restore 612, 618
         }

@@ -50,7 +50,7 @@ namespace StockMarket.AccountService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccountUsers");
+                    b.ToTable("AccountsUsers");
                 });
 #pragma warning restore 612, 618
         }

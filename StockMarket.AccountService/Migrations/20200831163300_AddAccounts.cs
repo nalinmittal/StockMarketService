@@ -7,7 +7,7 @@ namespace StockMarket.AccountService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AccountUsers",
+                name: "AccountsUsers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -21,14 +21,14 @@ namespace StockMarket.AccountService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccountUsers", x => x.Id);
+                    table.PrimaryKey("PK_AccountsUsers", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AccountUsers");
+                name: "AccountsUsers");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace StockMarket.AccountService.Repositories
             try
             {
                 Tuple<bool, string> result;
-                var account = context.AccountUsers.FirstOrDefault(u => u.Username == username
+                var account = context.AccountsUsers.FirstOrDefault(u => u.Username == username
                             && u.Password == password && u.Confirmed);
                 if (account == null)
                 {
@@ -92,7 +92,7 @@ namespace StockMarket.AccountService.Repositories
             try
             {
                 entity.Confirmed = true;
-                context.AccountUsers.Add(entity);
+                context.AccountsUsers.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
