@@ -21,7 +21,7 @@ namespace Models
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<StockExchange> StockExchanges { get; set; }
         public virtual DbSet<Stockprice> Stockprices { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Account> Users { get; set; }
 
     }
 }
