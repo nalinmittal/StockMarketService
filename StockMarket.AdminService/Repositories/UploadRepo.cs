@@ -65,7 +65,6 @@ namespace StockMarket.AdminService.Repositories
 
 
         using (OleDbConnection excelOledbConnection = new OleDbConnection(excelConString))
-
         {
 
             using (OleDbCommand excelDbCommand = new OleDbCommand())
@@ -122,9 +121,7 @@ namespace StockMarket.AdminService.Repositories
 
                                 CurrentPrice = float.Parse(r[2].ToString().Trim()),
 
-                                Date = r[3].ToString().Trim(),
-
-                                Time = r[4].ToString().Trim()
+                                TimeOfTransaction = DateTime.Parse(r[3].ToString().Trim())+TimeSpan.Parse(r[4].ToString().Trim())
 
                             });
 

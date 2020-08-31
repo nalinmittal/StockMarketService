@@ -13,20 +13,20 @@ namespace StockMarket.UserService.Controllers
     [ApiController]
     public class IpodetailController : ControllerBase
     {
-        private IRepository<Ipodetail> repository;
-        public IpodetailController(IRepository<Ipodetail> repository)
+        private IRepository<IpoDetail> repository;
+        public IpodetailController(IRepository<IpoDetail> repository)
         {
             this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Ipodetail> Get()
+        public IEnumerable<IpoDetail> Get()
         {
             return repository.Get();
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] Ipodetail ipodetail)
+        public IActionResult Post([FromForm] IpoDetail ipodetail)
         {
             if (ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace StockMarket.UserService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Ipodetail ipodetail)
+        public IActionResult Put(int id, [FromForm] IpoDetail ipodetail)
         {
             if (ModelState.IsValid)
             {

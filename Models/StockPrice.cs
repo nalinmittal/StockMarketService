@@ -14,8 +14,7 @@ namespace Models
         public virtual Company Company { get; set; }
         public virtual StockExchange Stockexchange { get; set; }
         public float CurrentPrice { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
+        public DateTime TimeOfTransaction { get; set; }
 
     }
 }

@@ -3,51 +3,52 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StockMarket.UserService.Data;
 
 namespace StockMarket.UserService.Repositories
 {
-    public class StockpriceRepository : IRepository<Stockprice>
+    public class StockPriceRepository : IStockPriceRepository<StockPrice>
     {
         private StockMarketContext context;
 
-        public StockpriceRepository(StockMarketContext context)
+        public StockPriceRepository(StockMarketContext context)
         {
             this.context = context;
         }
-        public bool Add(Stockprice entity)
+        public bool Add(StockPrice entity)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Stockprice entity)
+        public bool Delete(StockPrice entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Stockprice> Get()
+        public IEnumerable<StockPrice> Get()
         {
             throw new NotImplementedException();
         }
 
-        public Stockprice Get(object key)
+        public StockPrice Get(object key)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Stockprice entity)
+        public bool Update(StockPrice entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
         {
-            var stockprices = context.Stockprices.Where(t => t.Stockexchange.Stockexchange==stockExchange.Stockexchange && t.Company.Companyname==company.Companyname && t.Timeoftransaction > from && t.Timeoftransaction < to);
+            var stockprices = context.Stockprices.Where(t => t.Stockexchange.Stockexchange==stockExchange.Stockexchange && t.Company.Companyname==company.Companyname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
             return stockprices;
         }
 
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector)
+        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
         { 
-            var stockprices = context.Stockprices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname && t.Timeoftransaction > from && t.Timeoftransaction < to);
+            var stockprices = context.Stockprices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
             return stockprices;
         }
     }

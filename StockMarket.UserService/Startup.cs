@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Models;
+using StockMarket.UserService.Data;
 using StockMarket.UserService.Repositories;
 
 namespace StockMarket.UserService
@@ -33,8 +34,8 @@ namespace StockMarket.UserService
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<IRepository<Company>, CompanyRepository>();
-            services.AddScoped<IRepository<StockExchange>, StockexchangeRepository>();
-            services.AddScoped<IRepository<Stockprice>, StockpriceRepository>();
+            services.AddScoped<IStockPriceRepository<StockPrice>, StockPriceRepository>();
+            services.AddScoped<IRepository<IpoDetail>, IpoDetailRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

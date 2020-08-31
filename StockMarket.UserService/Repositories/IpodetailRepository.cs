@@ -4,20 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StockMarket.UserService.Data;
 
 namespace StockMarket.UserService.Repositories
 {
-    public class IpodetailRepository : IRepository<Ipodetail>
+    public class IpoDetailRepository : IRepository<IpoDetail>
 
     {
         private StockMarketContext context;
 
-        public IpodetailRepository(StockMarketContext context)
+        public IpoDetailRepository(StockMarketContext context)
         {
             this.context = context;
         }
 
-        public bool Add(Ipodetail entity)
+        public bool Add(IpoDetail entity)
         {
             try
             {
@@ -35,7 +36,7 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public bool Delete(Ipodetail entity)
+        public bool Delete(IpoDetail entity)
         {
             try
             {
@@ -53,29 +54,19 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public IEnumerable<Ipodetail> Get()
+        public IEnumerable<IpoDetail> Get()
         {
             var ipodetails = this.context.Ipos;
             return ipodetails;
         }
 
-        public Ipodetail Get(object key)
+        public IpoDetail Get(object key)
         {
             var ipodetail = this.context.Ipos.Find(key);
             return ipodetail;
         }
 
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(Ipodetail entity)
+        public bool Update(IpoDetail entity)
         {
             try
             {

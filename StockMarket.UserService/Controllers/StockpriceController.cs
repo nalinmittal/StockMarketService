@@ -11,22 +11,22 @@ namespace StockMarket.UserService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockpriceController : ControllerBase
+    public class StockPriceController : ControllerBase
     {
-        private IRepository<Stockprice> repository;
-        public StockpriceController(IRepository<Stockprice> repository)
+        private IStockPriceRepository<StockPrice> repository;
+        public StockPriceController(IStockPriceRepository<StockPrice> repository)
         {
             this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Stockprice> Get()
+        public IEnumerable<StockPrice> Get()
         {
             return repository.Get();
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] Stockprice stockprice)
+        public IActionResult Post([FromForm] StockPrice stockprice)
         {
             if (ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace StockMarket.UserService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Stockprice stockprice)
+        public IActionResult Put(int id, [FromForm] StockPrice stockprice)
         {
             if (ModelState.IsValid)
             {
@@ -75,19 +75,19 @@ namespace StockMarket.UserService.Controllers
             var isDeleted = this.repository.Delete(stockprice);
             if (isDeleted)
             {
-                return Ok("Stockprice deleted succesfully");
+                return Ok("StockPrice deleted succesfully");
             }
             return StatusCode(500, "Internal Server Error");
         }
 
         [HttpGet("/api/students2/searchbycompany")]
-        public IEnumerable<Stockprice> Get(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        public IEnumerable<StockPrice> Get(DateTime from, DateTime to, Company company, StockExchange stockExchange)
         {
             return repository.Search(from, to, company, stockExchange);
         }
 
         [HttpGet("/api/students2/searchbysector")]
-        public IEnumerable<Stockprice> Get(DateTime from, DateTime to, Sector sector)
+        public IEnumerable<StockPrice> Get(DateTime from, DateTime to, Sector sector)
         {
             return repository.Search(from, to, sector);
         }
