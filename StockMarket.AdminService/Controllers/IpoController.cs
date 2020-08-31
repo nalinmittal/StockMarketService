@@ -14,36 +14,36 @@ namespace StockMarket.AdminService.Controllers
     [ApiController]
     public class IpoController : ControllerBase
     {
-        IRepo<Ipodetail> repository;
+        IRepo<IpoDetail> repository;
 
-        public IpoController(IRepo<Ipodetail> repository)
+        public IpoController(IRepo<IpoDetail> repository)
         {
             this.repository = repository;
         }
 
         // GET: api/<IpoController>
         [HttpGet]
-        public IEnumerable<Ipodetail> Get()
+        public IEnumerable<IpoDetail> Get()
         {
             return this.repository.Get();
         }
 
         // GET api/<IpoController>/5
         [HttpGet("{id}")]
-        public Ipodetail Get(int id)
+        public IpoDetail Get(int id)
         {
             return this.repository.Get(id);
         }
 
         [HttpGet("{name}")]
-        public IEnumerable<Ipodetail> Get(string companyName)
+        public IEnumerable<IpoDetail> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);
         }
 
         // POST api/<IpoController>
         [HttpPost]
-        public IActionResult Post([FromForm] Ipodetail ipo)
+        public IActionResult Post([FromForm] IpoDetail ipo)
         {
             if (ModelState.IsValid)
             {

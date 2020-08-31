@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    public class Ipodetail
+    public class IpoDetail
     {
         [Key]
         public long Id { get; set; }

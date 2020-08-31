@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class IpoRepo : IRepo<Ipodetail>
+    public class IpoRepo : IRepo<IpoDetail>
     {
 
         private AdminContext context;
@@ -17,7 +17,7 @@ namespace StockMarket.AdminService.Repositories
             this.context = context;
         }
 
-        bool IRepo<Ipodetail>.Add(Ipodetail entity)
+        bool IRepo<IpoDetail>.Add(IpoDetail entity)
         {
             try
             {
@@ -35,19 +35,19 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        IEnumerable<Ipodetail> IRepo<Ipodetail>.Get()
+        IEnumerable<IpoDetail> IRepo<IpoDetail>.Get()
         {
             var ipos = this.context.Ipos;
             return ipos;
         }
 
-        Ipodetail IRepo<Ipodetail>.Get(object key)
+        IpoDetail IRepo<IpoDetail>.Get(object key)
         {
             var ipo = this.context.Ipos.Find(key);
             return ipo;
         }
 
-        IEnumerable<Ipodetail> IRepo<Ipodetail>.GetMatching(string name)
+        IEnumerable<IpoDetail> IRepo<IpoDetail>.GetMatching(string name)
         {
             var ipos = this.context.Ipos.Where(c => c.Company.Companyname.Contains(name));
             return ipos;

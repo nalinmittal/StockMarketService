@@ -35,7 +35,8 @@ namespace StockMarket.AdminService
             services.AddControllers();
             services.AddScoped<ICompanyRepo<Company>, CompanyRepo>();
             services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
-            services.AddScoped<IRepo<Ipodetail>, IpoRepo>();
+            services.AddScoped<IRepo<IpoDetail>, IpoRepo>();
+            services.AddScoped<IUploadRepo, UploadRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
