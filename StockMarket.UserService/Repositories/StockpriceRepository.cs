@@ -44,5 +44,11 @@ namespace StockMarket.UserService.Repositories
             var stockprices = context.Stockprices.Where(t => t.Stockexchange.Stockexchange==stockExchange.Stockexchange && t.Company.Companyname==company.Companyname && t.Timeoftransaction > from && t.Timeoftransaction < to);
             return stockprices;
         }
+
+        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector)
+        { 
+            var stockprices = context.Stockprices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname && t.Timeoftransaction > from && t.Timeoftransaction < to);
+            return stockprices;
+        }
     }
 }

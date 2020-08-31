@@ -14,5 +14,6 @@ namespace StockMarket.UserService.Repositories
         IEnumerable<T> Get();
         T Get(object key);
         IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange);
+        IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector);
     }
 }

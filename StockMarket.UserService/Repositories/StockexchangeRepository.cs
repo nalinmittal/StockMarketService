@@ -49,6 +49,16 @@ namespace StockMarket.UserService.Repositories
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Update(StockExchange entity)
         {
             throw new NotImplementedException();
