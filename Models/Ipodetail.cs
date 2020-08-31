@@ -13,10 +13,15 @@ namespace Models
         public long Id { get; set; }
         [Required]
         public virtual Company Company { get; set; }
+        [Required]
         public virtual StockExchange Stockexchange { get; set; }
+        [Required]
         public float Pricepershare { get; set; }
+        [Required]
         public int Totalnumberofshares { get; set; }
+        [Required]
         public string Opendatetime { get; set; }
+        [Required]
         public string Remarks { get; set; }
     }
 }

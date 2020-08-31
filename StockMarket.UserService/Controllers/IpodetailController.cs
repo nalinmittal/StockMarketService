@@ -11,29 +11,29 @@ namespace StockMarket.UserService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class IpodetailController : ControllerBase
     {
-        private IRepository<Company> repository;
-        public CompanyController(IRepository<Company> repository)
+        private IRepository<Ipodetail> repository;
+        public IpodetailController(IRepository<Ipodetail> repository)
         {
             this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Company> Get()
+        public IEnumerable<Ipodetail> Get()
         {
             return repository.Get();
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] Company company)
+        public IActionResult Post([FromForm] Ipodetail ipodetail)
         {
             if (ModelState.IsValid)
             {
-                var isAdded = repository.Add(company);
+                var isAdded = repository.Add(ipodetail);
                 if (isAdded)
                 {
-                    return Created("company", company);
+                    return Created("ipodetail", ipodetail);
                 }
 
             }
@@ -43,21 +43,21 @@ namespace StockMarket.UserService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Company company)
+        public IActionResult Put(int id, [FromForm] Ipodetail ipodetail)
         {
             if (ModelState.IsValid)
             {
-                if (id == company.Id)
+                if (id == ipodetail.Id)
                 {
                     var existing = this.repository.Get(id);
                     if (existing == null)
                     {
                         return NotFound();
                     }
-                    var isUpdated = this.repository.Update(company);
+                    var isUpdated = this.repository.Update(ipodetail);
                     if (isUpdated)
                     {
-                        return Ok(company);
+                        return Ok(ipodetail);
                     }
                 }
             }
@@ -67,12 +67,12 @@ namespace StockMarket.UserService.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var company = this.repository.Get(id);
-            if (company == null)
+            var ipodetail = this.repository.Get(id);
+            if (ipodetail == null)
             {
                 return NotFound();
             }
-            var isDeleted = this.repository.Delete(company);
+            var isDeleted = this.repository.Delete(ipodetail);
             if (isDeleted)
             {
                 return Ok("Company deleted succesfully");

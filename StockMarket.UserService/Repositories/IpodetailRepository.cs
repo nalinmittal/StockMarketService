@@ -1,22 +1,23 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Models;
 
 namespace StockMarket.UserService.Repositories
 {
-    public class CompanyRepository : IRepository<Company>
+    public class IpodetailRepository : IRepository<Ipodetail>
+
     {
         private StockMarketContext context;
 
-        public CompanyRepository(StockMarketContext context)
+        public IpodetailRepository(StockMarketContext context)
         {
             this.context = context;
         }
 
-        public bool Add(Company entity)
+        public bool Add(Ipodetail entity)
         {
             try
             {
@@ -34,7 +35,7 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public bool Delete(Company entity)
+        public bool Delete(Ipodetail entity)
         {
             try
             {
@@ -52,16 +53,16 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public IEnumerable<Company> Get()
+        public IEnumerable<Ipodetail> Get()
         {
-            var companies = this.context.Companies;
-            return companies;
+            var ipodetails = this.context.Ipos;
+            return ipodetails;
         }
 
-        public Company Get(object key)
+        public Ipodetail Get(object key)
         {
-            var company = this.context.Companies.Find(key);
-            return company;
+            var ipodetail = this.context.Ipos.Find(key);
+            return ipodetail;
         }
 
         public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
@@ -74,7 +75,7 @@ namespace StockMarket.UserService.Repositories
             throw new NotImplementedException();
         }
 
-        public bool Update(Company entity)
+        public bool Update(Ipodetail entity)
         {
             try
             {
@@ -93,3 +94,4 @@ namespace StockMarket.UserService.Repositories
         }
     }
 }
+

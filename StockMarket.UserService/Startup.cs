@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Models;
+using StockMarket.UserService.Repositories;
 
 namespace StockMarket.UserService
 {
@@ -25,7 +29,12 @@ namespace StockMarket.UserService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<StockMarketContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
+            services.AddScoped<IRepository<Company>, CompanyRepository>();
+            services.AddScoped<IRepository<StockExchange>, StockexchangeRepository>();
+            services.AddScoped<IRepository<Stockprice>, StockpriceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
