@@ -23,8 +23,8 @@ namespace StockMarket.UserService.Data
         public virtual DbSet<IpoDetail> Ipos { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<StockExchange> StockExchanges { get; set; }
-        public virtual DbSet<StockPrice> Stockprices { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<StockPrice> StockPrices { get; set; }
+        public virtual DbSet<Account> Users { get; set; }
 
     }
 }

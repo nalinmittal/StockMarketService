@@ -42,13 +42,21 @@ namespace StockMarket.UserService.Repositories
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
         {
-            var stockprices = context.Stockprices.Where(t => t.Stockexchange.Stockexchange==stockExchange.Stockexchange && t.Company.Companyname==company.Companyname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
-            return stockprices;
+            var stockPrices = context.StockPrices.Where(s =>
+
+                 s.CompanyStockExchange.CompanyId == company.Id &&
+
+                 s.CompanyStockExchange.StockExchangeId == stockExchange.Id &&
+
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) >= from &&
+
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) <= to);
+            return stockPrices;
         }
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
         { 
-            var stockprices = context.Stockprices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
+            var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
             return stockprices;
         }
     }

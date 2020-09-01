@@ -7,6 +7,10 @@ namespace Models
 {
     public class StockExchange
     {
+        public StockExchange()
+        {
+            CompanyStockExchanges = new HashSet<CompanyStockExchange>();
+        }
         [Key]
         public long Id { get; set; }
         [Required]
@@ -17,6 +21,8 @@ namespace Models
         public string Contactaddress { get; set; }
         [Required]
         public string Remarks { get; set; }
+        [Required]
+        public virtual ICollection<CompanyStockExchange> CompanyStockExchanges { get; set; }
 
     }
 }
