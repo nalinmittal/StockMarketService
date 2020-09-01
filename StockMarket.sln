@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarket.UserService", "StockMarket.UserService\StockMarket.UserService.csproj", "{96027603-B5E7-4FB5-A495-1F695E4A0CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarket.AccountService", "StockMarket.AccountService\StockMarket.AccountService.csproj", "{6E6BF6C7-A6AE-43EA-9491-A57BFABBF5D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarket.AccountService", "StockMarket.AccountService\StockMarket.AccountService.csproj", "{6E6BF6C7-A6AE-43EA-9491-A57BFABBF5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarket.Dtos", "StockMarket.Dtos\StockMarket.Dtos.csproj", "{4714DCF9-06A9-492C-BD7A-12DF3862E427}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6E6BF6C7-A6AE-43EA-9491-A57BFABBF5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E6BF6C7-A6AE-43EA-9491-A57BFABBF5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E6BF6C7-A6AE-43EA-9491-A57BFABBF5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4714DCF9-06A9-492C-BD7A-12DF3862E427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4714DCF9-06A9-492C-BD7A-12DF3862E427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4714DCF9-06A9-492C-BD7A-12DF3862E427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4714DCF9-06A9-492C-BD7A-12DF3862E427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

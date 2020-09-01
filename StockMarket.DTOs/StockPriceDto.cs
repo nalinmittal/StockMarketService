@@ -1,13 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockMarket.DTOs
+namespace StockMarket.Dtos
 {
     public class StockPriceDto
     {
         public int Id { get; set; }
         [Required]
-        public decimal CurrentPrice { get; set; }
+        public float CurrentPrice { get; set; }
         [Required]
         public DateTime DateTime { get; set; }
         [Required]
