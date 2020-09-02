@@ -5,7 +5,7 @@ using System.Text;
 
 namespace StockMarket.Dtos
 {
-    class IpoDetailDto
+    public class IpoDetailDto
     {
         public long Id { get; set; }
         [Required]
