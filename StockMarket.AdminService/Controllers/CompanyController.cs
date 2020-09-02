@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Models;
 using StockMarket.AdminService.Repositories;
+using StockMarket.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,36 +17,36 @@ namespace StockMarket.AdminService.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        ICompanyRepo<Company> repository;
+        ICompanyRepo<CompanyDto> repository;
 
-        public CompanyController(ICompanyRepo<Company> repository)
+        public CompanyController(ICompanyRepo<CompanyDto> repository)
         {
             this.repository = repository;
         }
 
         // GET: api/<CompanyController>
         [HttpGet]
-        public IEnumerable<Company> Get()
+        public IEnumerable<CompanyDto> Get()
         {
             return this.repository.Get();
         }
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public Company Get(int id)
+        public CompanyDto Get(int id)
         {
             return this.repository.Get(id);
         }
 
         [HttpGet("{name}")]
-        public IEnumerable<Company> Get(string companyName)
+        public IEnumerable<CompanyDto> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);
         }
 
         // POST api/<CompanyController>
         [HttpPost]
-        public IActionResult Post([FromForm] Company company)
+        public IActionResult Post([FromForm] CompanyDto company)
         {
             if(ModelState.IsValid)
             {
@@ -60,7 +61,7 @@ namespace StockMarket.AdminService.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] Company company)
+        public IActionResult Put(int id, [FromForm] CompanyDto company)
         {
             if(ModelState.IsValid)
             {
