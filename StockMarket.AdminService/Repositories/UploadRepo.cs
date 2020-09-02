@@ -121,7 +121,8 @@ namespace StockMarket.AdminService.Repositories
 
                                 CurrentPrice = float.Parse(r[2].ToString().Trim()),
 
-                                TimeOfTransaction = DateTime.Parse(r[3].ToString().Trim())+TimeSpan.Parse(r[4].ToString().Trim())
+                                Date = r[3].ToString().Trim(),
+                                Time = r[4].ToString().Trim()
 
                             });
 

@@ -12,9 +12,16 @@ namespace Models
         public long Id { get; set; }
         [Required]
         public virtual Company Company { get; set; }
+        [Required]
         public virtual StockExchange Stockexchange { get; set; }
+        [Required]
         public float CurrentPrice { get; set; }
-        public DateTime TimeOfTransaction { get; set; }
+        [Required]
+        public string Date { get; set; }
+        [Required]
+        public string Time { get; set; }
+        [Required]
+        public virtual CompanyStockExchange CompanyStockExchange { get; set; }
 
     }
 }

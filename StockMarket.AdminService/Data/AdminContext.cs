@@ -18,10 +18,19 @@ namespace StockMarket.AdminService.Data
         protected AdminContext()
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CompanyStockExchange>()
+                .HasKey(bc => new { bc.CompanyId, bc.StockExchangeId });
+            base.OnModelCreating(modelBuilder);
+
+        }
+
 
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<StockExchange> StockExchanges { get; set; }
         public virtual DbSet<IpoDetail> Ipos { get; set; }
         public virtual DbSet<StockPrice> StockPrices { get; set; }
+        public virtual DbSet<CompanyStockExchange> CompanyStockExchanges { get; set; }
     }
 }

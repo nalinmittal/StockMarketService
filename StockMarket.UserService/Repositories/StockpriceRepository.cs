@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StockMarket.UserService.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace StockMarket.UserService.Repositories
 {
@@ -17,38 +18,87 @@ namespace StockMarket.UserService.Repositories
         }
         public bool Add(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Add(entity);
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Delete(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Remove(entity);
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<StockPrice> Get()
         {
-            throw new NotImplementedException();
+            var stockPrices = this.context.StockPrices;
+            return stockPrices;
         }
 
         public StockPrice Get(object key)
         {
-            throw new NotImplementedException();
+            var stockPrice = this.context.StockPrices.Find(key);
+            return stockPrice;
         }
 
         public bool Update(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Entry(entity).State = EntityState.Modified;
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
         {
-            var stockprices = context.Stockprices.Where(t => t.Stockexchange.Stockexchange==stockExchange.Stockexchange && t.Company.Companyname==company.Companyname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
-            return stockprices;
+            var stockPrices = context.StockPrices.Where(s =>
+
+                 s.CompanyStockExchange.CompanyId == company.Id &&
+
+                 s.CompanyStockExchange.StockExchangeId == stockExchange.Id &&
+
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) >= from &&
+
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) <= to);
+            return stockPrices;
         }
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
         { 
-            var stockprices = context.Stockprices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname && t.TimeOfTransaction > from && t.TimeOfTransaction < to);
+            var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
             return stockprices;
         }
     }
