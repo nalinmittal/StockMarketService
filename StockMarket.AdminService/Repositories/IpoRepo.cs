@@ -1,5 +1,6 @@
 ﻿using Models;
 using StockMarket.AdminService.Data;
+using StockMarket.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class IpoRepo : IRepo<IpoDetail>
+    public class IpoRepo : IRepo<IpoDetailDto>
     {
 
         private AdminContext context;
@@ -17,7 +18,7 @@ namespace StockMarket.AdminService.Repositories
             this.context = context;
         }
 
-        bool IRepo<IpoDetail>.Add(IpoDetail entity)
+        bool IRepo<IpoDetailDto>.Add(IpoDetailDto entity)
         {
             try
             {
@@ -35,19 +36,19 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        IEnumerable<IpoDetail> IRepo<IpoDetail>.Get()
+        IEnumerable<IpoDetailDto> IRepo<IpoDetailDto>.Get()
         {
             var ipos = this.context.Ipos;
             return ipos;
         }
 
-        IpoDetail IRepo<IpoDetail>.Get(object key)
+        IpoDetail IRepo<IpoDetailDto>.Get(object key)
         {
             var ipo = this.context.Ipos.Find(key);
             return ipo;
         }
 
-        IEnumerable<IpoDetail> IRepo<IpoDetail>.GetMatching(string name)
+        IEnumerable<IpoDetailDto> IRepo<IpoDetailDto>.GetMatching(string name)
         {
             var ipos = this.context.Ipos.Where(c => c.Company.Companyname.Contains(name));
             return ipos;

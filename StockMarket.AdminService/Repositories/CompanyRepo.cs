@@ -87,7 +87,7 @@ namespace StockMarket.AdminService.Repositories
             var companies = new List<CompanyDto>();
             foreach (var company in this.context.Companies)
             {
-                CompanyDto companydto = new CompanyDto
+                CompanyDto companyDto = new CompanyDto
                 {
                     Id = company.Id,
                     Companyname = company.Companyname,
@@ -99,9 +99,9 @@ namespace StockMarket.AdminService.Repositories
                 };
                 foreach(var companystockexchange in company.CompanyStockExchanges)
                 {
-                    companydto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
                 }
-                companies.Add(companydto);
+                companies.Add(companyDto);
             }
             return companies;
         }
@@ -109,7 +109,7 @@ namespace StockMarket.AdminService.Repositories
         public CompanyDto Get(object key)
         {
             var company = this.context.Companies.Find(key);
-            CompanyDto companydto = new CompanyDto
+            CompanyDto companyDto = new CompanyDto
             {
                 Id = company.Id,
                 Companyname = company.Companyname,
@@ -121,9 +121,9 @@ namespace StockMarket.AdminService.Repositories
             };
             foreach (var companystockexchange in company.CompanyStockExchanges)
             {
-                companydto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
             }
-            return companydto;
+            return companyDto;
         }
 
         public IEnumerable<CompanyDto> GetMatching(string name)
@@ -132,7 +132,7 @@ namespace StockMarket.AdminService.Repositories
             List<CompanyDto> companyDtos = new List<CompanyDto>();           
             foreach (var company in companies)
             {
-                CompanyDto companydto = new CompanyDto
+                CompanyDto companyDto = new CompanyDto
                 {
                     Id = company.Id,
                     Companyname = company.Companyname,
@@ -144,9 +144,9 @@ namespace StockMarket.AdminService.Repositories
                 };
                 foreach (var companystockexchange in company.CompanyStockExchanges)
                 {
-                    companydto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
                 }
-                companyDtos.Add(companydto);
+                companyDtos.Add(companyDto);
             }
             return companyDtos;
         }

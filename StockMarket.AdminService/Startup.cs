@@ -35,8 +35,8 @@ namespace StockMarket.AdminService
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
             services.AddScoped<ICompanyRepo<CompanyDto>, CompanyRepo>();
-            services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
-            services.AddScoped<IRepo<IpoDetail>, IpoRepo>();
+            services.AddScoped<IRepo<StockExchangeDto>, StockExchangeRepo>();
+            services.AddScoped<IRepo<IpoDetailDto>, IpoRepo>();
             services.AddScoped<IUploadRepo, UploadRepo>();
         }
 

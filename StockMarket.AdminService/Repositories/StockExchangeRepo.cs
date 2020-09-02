@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 using StockMarket.AdminService.Data;
+using StockMarket.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class StockExchangeRepo : IRepo<StockExchange>
+    public class StockExchangeRepo : IRepo<StockExchangeDto>
     {
         private AdminContext context;
 
@@ -15,10 +16,23 @@ namespace StockMarket.AdminService.Repositories
         {
             this.context = context;
         }
-        public bool Add(StockExchange entity)
+        public bool Add(StockExchangeDto entity)
         {
             try
             {
+                var exchange = new StockExchange
+                {
+                    Id = entity.Id,
+                    Stockexchange = entity.Stockexchange,
+                    Brief = entity.Brief,
+                    Remarks = entity.Remarks,
+                    Contactaddress = entity.Contactaddress,
+                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                };
+                foreach (var companyId in entity.CompanyIds)
+                {
+                    exchange.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(companyId, exchange.Id));
+                }
                 this.context.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)
@@ -33,34 +47,46 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        //public bool Delete(StockExchange entity)
-        //{
-        //    try
-        //    {
-        //        this.context.Remove(entity);
-        //        int updates = context.SaveChanges();
-        //        if (updates > 0)
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        public IEnumerable<StockExchange> Get()
+        public IEnumerable<StockExchangeDto> Get()
         {
-            var exchanges = this.context.StockExchanges;
+            var exchanges = new List<StockExchangeDto>();
+            foreach (var exchange in this.context.StockExchanges)
+            {
+                StockExchangeDto exchangeDto = new StockExchangeDto
+                {
+                    Id = exchange.Id,
+                    Stockexchange = exchange.Stockexchange,
+                    Brief = exchange.Brief,
+                    Remarks = exchange.Remarks,
+                    Contactaddress = exchange.Contactaddress,
+                    CompanyIds = new List<int>()
+                };
+                foreach (var companystockexchange in exchange.CompanyStockExchanges)
+                {
+                    exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+                }
+                exchanges.Add(exchangeDto);
+            }
             return exchanges;
         }
 
-        public StockExchange Get(object key)
+        public StockExchangeDto Get(object key)
         {
             var exchange = this.context.StockExchanges.Find(key);
-            return exchange;
+            StockExchangeDto exchangeDto = new StockExchangeDto
+            {
+                Id = exchange.Id,
+                Stockexchange = exchange.Stockexchange,
+                Brief = exchange.Brief,
+                Remarks = exchange.Remarks,
+                Contactaddress = exchange.Contactaddress,
+                CompanyIds = new List<int>()
+            };
+            foreach (var companystockexchange in exchange.CompanyStockExchanges)
+            {
+                exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+            }
+            return exchangeDto;
         }
 
         //public bool Update(StockExchange entity)
@@ -81,10 +107,28 @@ namespace StockMarket.AdminService.Repositories
         //    }
         //}
 
-        IEnumerable<StockExchange> IRepo<StockExchange>.GetMatching(string name)
+        IEnumerable<StockExchangeDto> IRepo<StockExchangeDto>.GetMatching(string name)
         {
-            var exchanges = this.context.StockExchanges.Where(c => c.Stockexchange.Contains(name));
-            return exchanges;
+            var exchanges = this.context.StockExchanges.Where(e => e.Stockexchange.Contains(name));
+            List<StockExchangeDto> exchangeDtos = new List<StockExchangeDto>();
+            foreach (var exchange in exchanges)
+            {
+                StockExchangeDto exchangeDto = new StockExchangeDto
+                {
+                    Id = exchange.Id,
+                    Stockexchange = exchange.Stockexchange,
+                    Brief = exchange.Brief,
+                    Remarks = exchange.Remarks,
+                    Contactaddress = exchange.Contactaddress,
+                    CompanyIds = new List<int>()
+                };
+                foreach (var companystockexchange in exchange.CompanyStockExchanges)
+                {
+                    exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+                }
+                exchangeDtos.Add(exchangeDto);
+            }
+            return exchangeDtos;
         }
     }
 }
