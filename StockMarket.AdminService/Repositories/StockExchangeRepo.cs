@@ -33,7 +33,7 @@ namespace StockMarket.AdminService.Repositories
                 {
                     exchange.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(companyId, exchange.Id));
                 }
-                this.context.Add(entity);
+                this.context.Add(exchange);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
