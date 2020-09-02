@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using StockMarket.AdminService.Repositories;
+using StockMarket.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,36 +15,36 @@ namespace StockMarket.AdminService.Controllers
     [ApiController]
     public class IpoController : ControllerBase
     {
-        IRepo<IpoDetail> repository;
+        IRepo<IpoDetailDto> repository;
 
-        public IpoController(IRepo<IpoDetail> repository)
+        public IpoController(IRepo<IpoDetailDto> repository)
         {
             this.repository = repository;
         }
 
         // GET: api/<IpoController>
         [HttpGet]
-        public IEnumerable<IpoDetail> Get()
+        public IEnumerable<IpoDetailDto> Get()
         {
             return this.repository.Get();
         }
 
         // GET api/<IpoController>/5
         [HttpGet("{id}")]
-        public IpoDetail Get(int id)
+        public IpoDetailDto Get(int id)
         {
             return this.repository.Get(id);
         }
 
         [HttpGet("{name}")]
-        public IEnumerable<IpoDetail> Get(string companyName)
+        public IEnumerable<IpoDetailDto> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);
         }
 
         // POST api/<IpoController>
         [HttpPost]
-        public IActionResult Post([FromForm] IpoDetail ipo)
+        public IActionResult Post([FromForm] IpoDetailDto ipo)
         {
             if (ModelState.IsValid)
             {

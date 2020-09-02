@@ -17,7 +17,7 @@ namespace StockMarket.Dtos
         [Required]
         public string Remarks { get; set; }
         [Required]
-        public List<int> Companies { get; set; }
+        public List<int> CompanyIds { get; set; }
 
     }
 }

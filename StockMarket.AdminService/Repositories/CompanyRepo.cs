@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 using StockMarket.AdminService.Data;
+using StockMarket.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AdminService.Repositories
 {
-    public class CompanyRepo : ICompanyRepo<Company>
+    public class CompanyRepo : ICompanyRepo<CompanyDto>
     {
         private AdminContext context;
 
@@ -17,11 +18,25 @@ namespace StockMarket.AdminService.Repositories
             this.context = context;
         }
 
-        public bool Add(Company entity)
+        public bool Add(CompanyDto entity)
         {
             try
             {
-                this.context.Add(entity);
+                var company = new Company
+                {
+                    Id = entity.Id,
+                    Companyname = entity.Companyname,
+                    Turnover = entity.Turnover,
+                    Ceo = entity.Ceo,
+                    Boardofdirectors = entity.Boardofdirectors,
+                    Brief = entity.Brief,
+                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                };
+                foreach (var exchangeId in entity.StockExchangeIds)
+                {
+                    company.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(company.Id, exchangeId));
+                }
+                this.context.Add(company);
                 int updates = context.SaveChanges();
                 if(updates > 0)
                 {
@@ -35,11 +50,25 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public bool Delete(Company entity)
+        public bool Delete(CompanyDto entity)
         {
             try
             {
-                this.context.Remove(entity);
+                var company = new Company
+                {
+                    Id = entity.Id,
+                    Companyname = entity.Companyname,
+                    Turnover = entity.Turnover,
+                    Ceo = entity.Ceo,
+                    Boardofdirectors = entity.Boardofdirectors,
+                    Brief = entity.Brief,
+                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                };
+                foreach (var exchangeId in entity.StockExchangeIds)
+                {
+                    company.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(company.Id, exchangeId));
+                }
+                this.context.Remove(company);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -53,25 +82,76 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public IEnumerable<Company> Get()
+        public IEnumerable<CompanyDto> Get()
         {
-            var companies = this.context.Companies;
+            var companies = new List<CompanyDto>();
+            foreach (var company in this.context.Companies)
+            {
+                CompanyDto companyDto = new CompanyDto
+                {
+                    Id = company.Id,
+                    Companyname = company.Companyname,
+                    Turnover = company.Turnover,
+                    Ceo = company.Ceo,
+                    Boardofdirectors = company.Boardofdirectors,
+                    Brief = company.Brief,
+                    StockExchangeIds = new List<long>()
+                };
+                foreach(var companystockexchange in company.CompanyStockExchanges)
+                {
+                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                }
+                companies.Add(companyDto);
+            }
             return companies;
         }
 
-        public Company Get(object key)
+        public CompanyDto Get(object key)
         {
             var company = this.context.Companies.Find(key);
-            return company;
+            CompanyDto companyDto = new CompanyDto
+            {
+                Id = company.Id,
+                Companyname = company.Companyname,
+                Turnover = company.Turnover,
+                Ceo = company.Ceo,
+                Boardofdirectors = company.Boardofdirectors,
+                Brief = company.Brief,
+                StockExchangeIds = new List<long>()
+            };
+            foreach (var companystockexchange in company.CompanyStockExchanges)
+            {
+                companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+            }
+            return companyDto;
         }
 
-        public IEnumerable<Company> GetMatching(string name)
+        public IEnumerable<CompanyDto> GetMatching(string name)
         {
             var companies = this.context.Companies.Where(c => c.Companyname.Contains(name));
-            return companies;
+            List<CompanyDto> companyDtos = new List<CompanyDto>();           
+            foreach (var company in companies)
+            {
+                CompanyDto companyDto = new CompanyDto
+                {
+                    Id = company.Id,
+                    Companyname = company.Companyname,
+                    Turnover = company.Turnover,
+                    Ceo = company.Ceo,
+                    Boardofdirectors = company.Boardofdirectors,
+                    Brief = company.Brief,
+                    StockExchangeIds = new List<long>()
+                };
+                foreach (var companystockexchange in company.CompanyStockExchanges)
+                {
+                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                }
+                companyDtos.Add(companyDto);
+            }
+            return companyDtos;
         }
 
-        public bool Update(Company entity)
+        public bool Update(CompanyDto entity)
         {
             try
             {

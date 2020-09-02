@@ -15,6 +15,7 @@ using Microsoft.Extensions.Options;
 using Models;
 using StockMarket.AdminService.Data;
 using StockMarket.AdminService.Repositories;
+using StockMarket.Dtos;
 
 namespace StockMarket.AdminService
 {
@@ -33,9 +34,9 @@ namespace StockMarket.AdminService
             services.AddDbContext<AdminContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
-            services.AddScoped<ICompanyRepo<Company>, CompanyRepo>();
-            services.AddScoped<IRepo<StockExchange>, StockExchangeRepo>();
-            services.AddScoped<IRepo<IpoDetail>, IpoRepo>();
+            services.AddScoped<ICompanyRepo<CompanyDto>, CompanyRepo>();
+            services.AddScoped<IRepo<StockExchangeDto>, StockExchangeRepo>();
+            services.AddScoped<IRepo<IpoDetailDto>, IpoRepo>();
             services.AddScoped<IUploadRepo, UploadRepo>();
         }
 
