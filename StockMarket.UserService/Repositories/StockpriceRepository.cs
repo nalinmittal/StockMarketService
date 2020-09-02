@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StockMarket.UserService.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace StockMarket.UserService.Repositories
 {
@@ -17,27 +18,68 @@ namespace StockMarket.UserService.Repositories
         }
         public bool Add(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Add(entity);
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Delete(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Remove(entity);
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<StockPrice> Get()
         {
-            throw new NotImplementedException();
+            var stockPrices = this.context.StockPrices;
+            return stockPrices;
         }
 
         public StockPrice Get(object key)
         {
-            throw new NotImplementedException();
+            var stockPrice = this.context.StockPrices.Find(key);
+            return stockPrice;
         }
 
         public bool Update(StockPrice entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Entry(entity).State = EntityState.Modified;
+                int updates = context.SaveChanges();
+                if (updates > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
