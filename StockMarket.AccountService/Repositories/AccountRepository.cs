@@ -105,5 +105,21 @@ namespace StockMarket.AccountService.Repositories
                 return false;
             }
         }
+        public Account GetProfile(string token)
+        {
+            return context.AccountsUsers.FirstOrDefault(u => u.Email == token);
+        }
+
+        public bool UpdateProfile(Account entity)
+        {
+            context.AccountsUsers.Update(entity);
+            int updates = context.SaveChanges();
+            if (updates > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
     }
 }

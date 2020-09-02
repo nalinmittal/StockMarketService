@@ -1,8 +1,12 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using StockMarket.AccountService.Models;
-using StockMarket.AccountService.NewFolder1;
+
+
 
 namespace StockMarket.AccountService.Controllers
 {
@@ -11,17 +15,17 @@ namespace StockMarket.AccountService.Controllers
     public class AccountsController : ControllerBase
     {
 
-        private IAccountRepository<Account> repository;
-        public AccountsController(IAccountRepository<Account> repository)
+        private NewFolder1.IAccountRepository<Account> repository;
+        public AccountsController(NewFolder1.IAccountRepository<Account> repository)
         {
             this.repository = repository;
         }
 
-        // GET: api/<AuthController>
+
         [HttpGet]
         public IActionResult Get(string username, string password)
         {
-            //SSV
+
             if (!(string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password)))
             {
                 try
@@ -32,14 +36,12 @@ namespace StockMarket.AccountService.Controllers
                     {
                         return Ok(result.Item2); //token
                     }
-                    // fail -> 
-                    // invalid credentials
                     else
                     {
                         return BadRequest("Invalid credentials");
                     }
                 }
-                catch (Exception ex) // internal server error
+                catch (Exception ex)
                 {
                     return StatusCode(500, "internal server error");
                 }
@@ -47,7 +49,6 @@ namespace StockMarket.AccountService.Controllers
             return BadRequest("Please pass both username and password");
         }
 
-        // GET api/<AuthController>/5
         [HttpGet("logout")]
         public IActionResult Get()
         {
@@ -55,15 +56,13 @@ namespace StockMarket.AccountService.Controllers
             return Ok("logged out");
         }
 
-        // POST api/<AuthController>
-        // register new user / signup
+
         [HttpPost]
         public IActionResult Post([FromForm] Account account)
         {
-            //SSV
+
             if (ModelState.IsValid)
             {
-                //pass to repository
                 var isSuccess = repository.Signup(account);
                 if (isSuccess)
                 {
@@ -73,9 +72,30 @@ namespace StockMarket.AccountService.Controllers
             }
             return BadRequest(ModelState);
         }
+        [HttpGet("profile")]
+        [Authorize]
+        public IActionResult GetProfile()
+        {
+            var currentUser = HttpContext.User;
+            var email = currentUser.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub).Value;
+            var result = repository.GetProfile(email);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public IActionResult UpdateProfile([FromForm] Account account)
+        {
+            var isSuccess = repository.UpdateProfile(account);
+            if (isSuccess)
+            {
+                return Ok("Updated changes successfully");
+            }
+            return StatusCode(500, "Internal server error");
+
+        }
+
     }
 }
-
 
 
 
