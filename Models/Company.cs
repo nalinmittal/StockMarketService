@@ -30,8 +30,6 @@ namespace Models
         public virtual Sector Sector { get; set; }
         [Required]
         public string Brief { get; set; }
-        [Required]
-        public string Stockcodes { get; set; }
 
     }
 }
