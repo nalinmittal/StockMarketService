@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "StockMarketApp"
+    }
+  },
+  "defaultProject": "StockMarketApp",
+  "cli": {
+    "analytics": "54a105d7-c192-435d-bdfe-79be2309b1ed"
+  }
 }
