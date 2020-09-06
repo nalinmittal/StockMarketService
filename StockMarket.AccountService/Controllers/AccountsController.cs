@@ -68,7 +68,7 @@ namespace StockMarket.AccountService.Controllers
                 {
                     return Ok("User registered successfully");
                 }
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error.");
             }
             return BadRequest(ModelState);
         }
