@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Models;
+using StockMarket.AdminService.Data;
 
-namespace Models.Migrations
+namespace StockMarket.AdminService.Migrations
 {
-    //[DbContext(typeof(StockMarketContext))]
-    [Migration("20200830232217_SectorUpdate")]
-    partial class SectorUpdate
+    [DbContext(typeof(AdminContext))]
+    [Migration("20200907200620_ConflictFix")]
+    partial class ConflictFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,19 +32,18 @@ namespace Models.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Brief")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ceo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Companyname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SectorId")
+                    b.Property<string>("Ceo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Company")
                         .HasColumnType("int");
 
-                    b.Property<string>("Stockcodes")
+                    b.Property<string>("Companyname")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Turnover")
@@ -52,12 +51,27 @@ namespace Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SectorId");
+                    b.HasIndex("Company");
 
                     b.ToTable("company");
                 });
 
-            modelBuilder.Entity("Models.Ipodetail", b =>
+            modelBuilder.Entity("Models.CompanyStockExchange", b =>
+                {
+                    b.Property<long>("CompanyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StockExchangeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CompanyId", "StockExchangeId");
+
+                    b.HasIndex("StockExchangeId");
+
+                    b.ToTable("CompanyStockExchanges");
+                });
+
+            modelBuilder.Entity("Models.IpoDetail", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,26 +81,24 @@ namespace Models.Migrations
                     b.Property<long>("CompanyId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Opendatetime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Opendatetime")
+                        .HasColumnType("datetime2");
 
                     b.Property<float>("Pricepershare")
                         .HasColumnType("real");
 
                     b.Property<string>("Remarks")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("StockexchangeId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("StockExchangeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Totalnumberofshares")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("StockexchangeId");
 
                     b.ToTable("Ipos");
                 });
@@ -108,22 +120,17 @@ namespace Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sectors");
+                    b.ToTable("Sector");
                 });
 
             modelBuilder.Entity("Models.StockExchange", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Stockexchange")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Brief")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("CompanyId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("Contactaddress")
                         .IsRequired()
@@ -133,18 +140,12 @@ namespace Models.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Stockexchange")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
+                    b.HasKey("Stockexchange");
 
                     b.ToTable("StockExchanges");
                 });
 
-            modelBuilder.Entity("Models.Stockprice", b =>
+            modelBuilder.Entity("Models.StockPrice", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,66 +155,34 @@ namespace Models.Migrations
                     b.Property<long>("CompanyId")
                         .HasColumnType("bigint");
 
-                    b.Property<float>("Currentprice")
+                    b.Property<float>("CurrentPrice")
                         .HasColumnType("real");
 
                     b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("StockexchangeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Time")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("StockexchangeId");
-
-                    b.ToTable("Stockprices");
-                });
-
-            modelBuilder.Entity("Models.User", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Confirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("Mobilenumber")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Usertype")
+                    b.Property<string>("StockExchangeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("StockPrices");
                 });
 
             modelBuilder.Entity("Models.Company", b =>
                 {
                     b.HasOne("Models.Sector", "Sector")
                         .WithMany("Companylist")
-                        .HasForeignKey("SectorId");
+                        .HasForeignKey("Company");
                 });
 
-            modelBuilder.Entity("Models.Ipodetail", b =>
+            modelBuilder.Entity("Models.CompanyStockExchange", b =>
                 {
                     b.HasOne("Models.Company", "Company")
                         .WithMany()
@@ -221,29 +190,11 @@ namespace Models.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.StockExchange", "Stockexchange")
+                    b.HasOne("Models.StockExchange", "StockExchange")
                         .WithMany()
-                        .HasForeignKey("StockexchangeId");
-                });
-
-            modelBuilder.Entity("Models.StockExchange", b =>
-                {
-                    b.HasOne("Models.Company", null)
-                        .WithMany("Stockexchanges")
-                        .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("Models.Stockprice", b =>
-                {
-                    b.HasOne("Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
+                        .HasForeignKey("StockExchangeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Models.StockExchange", "Stockexchange")
-                        .WithMany()
-                        .HasForeignKey("StockexchangeId");
                 });
 #pragma warning restore 612, 618
         }
