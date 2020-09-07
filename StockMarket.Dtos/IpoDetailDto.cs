@@ -9,9 +9,9 @@ namespace StockMarket.Dtos
     {
         public long Id { get; set; }
         [Required]
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         [Required]
-        public long StockExchangeId { get; set; }
+        public string StockExchangeId { get; set; }
         [Required]
         public float Pricepershare { get; set; }
         [Required]

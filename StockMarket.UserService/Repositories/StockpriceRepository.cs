@@ -97,9 +97,10 @@ namespace StockMarket.UserService.Repositories
         }
 
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
-        { 
-            var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
-            return stockprices;
+        {
+            //var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
+            //return stockprices;
+            throw new NotImplementedException();
         }
     }
 }

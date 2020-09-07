@@ -27,13 +27,13 @@ namespace StockMarket.AdminService.Repositories
                     Brief = entity.Brief,
                     Remarks = entity.Remarks,
                     Contactaddress = entity.Contactaddress,
-                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                    //CompanyStockExchanges = new List<CompanyStockExchange>()
                 };
-                foreach (var companyId in entity.CompanyIds)
-                {
-                    exchange.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(companyId, exchange.Id));
-                }
-                this.context.Add(exchange);
+                //foreach (var companyId in entity.CompanyIds)
+                //{
+                //    exchange.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(companyId, exchange.Id));
+                //}
+                context.Add(exchange);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -41,9 +41,9 @@ namespace StockMarket.AdminService.Repositories
                 }
                 return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
 
@@ -59,11 +59,11 @@ namespace StockMarket.AdminService.Repositories
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,
-                    CompanyIds = new List<int>()
+                    CompanyIds = new List<long>()
                 };
-                foreach (var companystockexchange in exchange.CompanyStockExchanges)
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.StockExchangeId==exchange.Id))
                 {
-                    exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+                    exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
                 }
                 exchanges.Add(exchangeDto);
             }
@@ -80,11 +80,11 @@ namespace StockMarket.AdminService.Repositories
                 Brief = exchange.Brief,
                 Remarks = exchange.Remarks,
                 Contactaddress = exchange.Contactaddress,
-                CompanyIds = new List<int>()
+                CompanyIds = new List<long>()
             };
-            foreach (var companystockexchange in exchange.CompanyStockExchanges)
+            foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Id))
             {
-                exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+                exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
             }
             return exchangeDto;
         }
@@ -109,7 +109,7 @@ namespace StockMarket.AdminService.Repositories
 
         IEnumerable<StockExchangeDto> IRepo<StockExchangeDto>.GetMatching(string name)
         {
-            var exchanges = this.context.StockExchanges.Where(e => e.Stockexchange.Contains(name));
+            var exchanges = context.StockExchanges.Where(e => e.Stockexchange.Contains(name));
             List<StockExchangeDto> exchangeDtos = new List<StockExchangeDto>();
             foreach (var exchange in exchanges)
             {
@@ -120,11 +120,11 @@ namespace StockMarket.AdminService.Repositories
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,
-                    CompanyIds = new List<int>()
+                    CompanyIds = new List<long>()
                 };
-                foreach (var companystockexchange in exchange.CompanyStockExchanges)
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Id))
                 {
-                    exchangeDto.CompanyIds.Add(companystockexchange.CompanyId);
+                    exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
                 }
                 exchangeDtos.Add(exchangeDto);
             }

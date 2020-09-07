@@ -10,11 +10,11 @@ namespace Models
     [Table("company")]
     public class Company
     {
-        public Company()
-        {
-            CompanyStockExchanges = new HashSet<CompanyStockExchange>();
-        }
-        [Key]
+        //public Company()
+        //{
+        //    CompanyStockExchanges = new HashSet<CompanyStockExchange>();
+        //}
+        //[Key]
         public long Id { get; set; }
         [Required]
         public string Companyname { get; set; }
@@ -24,9 +24,7 @@ namespace Models
         public string Ceo { get; set; }
         [Required]
         public string Boardofdirectors { get; set; }
-        [Required]
-        public virtual ICollection<CompanyStockExchange> CompanyStockExchanges { get; set; }
-        [Required]
+        //public virtual ICollection<CompanyStockExchange> CompanyStockExchanges { get; set; }
         public virtual Sector Sector { get; set; }
         [Required]
         public string Brief { get; set; }
