@@ -24,29 +24,38 @@ namespace StockMarket.AdminService.Repositories
             {
                 var company = new Company
                 {
-                    Id = entity.Id,
+                    //Id = entity.Id,
                     Companyname = entity.Companyname,
                     Turnover = entity.Turnover,
                     Ceo = entity.Ceo,
                     Boardofdirectors = entity.Boardofdirectors,
                     Brief = entity.Brief,
-                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                    //CompanyStockExchanges = new List<CompanyStockExchange>()
                 };
+                //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[company] ON ");
+                context.Add(company);
+                int updates = context.SaveChanges();
+                if (updates == 0)
+                {
+                    return false;
+                }
+
+                var companyId = context.Companies.Where(c => c.Companyname == entity.Companyname).Select(c=>c.Id).ToList()[0];
+
                 foreach (var exchangeId in entity.StockExchangeIds)
                 {
-                    company.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(company.Id, exchangeId));
+                    context.CompanyStockExchanges.Add(new CompanyStockExchange() { CompanyId = companyId, StockExchangeId = exchangeId });
                 }
-                this.context.Add(company);
-                int updates = context.SaveChanges();
-                if(updates > 0)
+                int updates2 = context.SaveChanges();
+                if(updates2 > 0)
                 {
                     return true;
                 }
                 return false;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
 
@@ -62,13 +71,13 @@ namespace StockMarket.AdminService.Repositories
                     Ceo = entity.Ceo,
                     Boardofdirectors = entity.Boardofdirectors,
                     Brief = entity.Brief,
-                    CompanyStockExchanges = new List<CompanyStockExchange>()
+                    //CompanyStockExchanges = new List<CompanyStockExchange>()
                 };
-                foreach (var exchangeId in entity.StockExchangeIds)
+                context.Remove(company);
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId==entity.Id))
                 {
-                    company.CompanyStockExchanges.Add(this.context.CompanyStockExchanges.Find(company.Id, exchangeId));
+                    context.CompanyStockExchanges.Remove(companyStockExchange);
                 }
-                this.context.Remove(company);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -97,9 +106,9 @@ namespace StockMarket.AdminService.Repositories
                     Brief = company.Brief,
                     StockExchangeIds = new List<string>()
                 };
-                foreach(var companystockexchange in company.CompanyStockExchanges)
+                foreach(var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.CompanyId==company.Id))
                 {
-                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                    companyDto.StockExchangeIds.Add(companyStockExchange.StockExchangeId);
                 }
                 companies.Add(companyDto);
             }
@@ -119,9 +128,9 @@ namespace StockMarket.AdminService.Repositories
                 Brief = company.Brief,
                 StockExchangeIds = new List<string>()
             };
-            foreach (var companystockexchange in company.CompanyStockExchanges)
+            foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.CompanyId==company.Id))
             {
-                companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                companyDto.StockExchangeIds.Add(companyStockExchange.StockExchangeId);
             }
             return companyDto;
         }
@@ -142,9 +151,9 @@ namespace StockMarket.AdminService.Repositories
                     Brief = company.Brief,
                     StockExchangeIds = new List<string>()
                 };
-                foreach (var companystockexchange in company.CompanyStockExchanges)
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.CompanyId==company.Id))
                 {
-                    companyDto.StockExchangeIds.Add(companystockexchange.StockExchangeId);
+                    companyDto.StockExchangeIds.Add(companyStockExchange.StockExchangeId);
                 }
                 companyDtos.Add(companyDto);
             }

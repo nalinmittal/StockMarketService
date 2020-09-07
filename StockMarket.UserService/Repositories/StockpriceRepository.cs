@@ -96,5 +96,12 @@ namespace StockMarket.UserService.Repositories
                  Convert.ToDateTime(s.Date + ' ' + s.Time) <= stockpricedto.to);
             return stockPrices;
         }
+        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
+        {
+            //var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
+            //return stockprices;
+            throw new NotImplementedException();
+        }
+
     }
 }

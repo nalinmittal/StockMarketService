@@ -18,7 +18,6 @@ namespace StockMarket.Dtos
         public string Boardofdirectors { get; set; }
         [Required]
         public List<string> StockExchangeIds { get; set; }
-        [Required]
         public int SectorId { get; set; }
         [Required]
         public string Brief { get; set; }

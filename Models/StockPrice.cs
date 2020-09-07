@@ -11,10 +11,6 @@ namespace Models
         [Key]
         public long Id { get; set; }
         [Required]
-        public virtual Company Company { get; set; }
-        [Required]
-        public virtual StockExchange Stockexchange { get; set; }
-        [Required]
         public float CurrentPrice { get; set; }
         [Required]
         public string Date { get; set; }
