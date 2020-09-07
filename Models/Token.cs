@@ -8,6 +8,6 @@ namespace Models
     public class Token
     {
         public UserType UserType { get; set; }
-        public string Token { get; set; }
+        public string token { get; set; }
     }
 }

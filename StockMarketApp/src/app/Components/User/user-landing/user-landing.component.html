@@ -1,1 +1,10 @@
-<p>user-landing works!</p>
+<div class="container">
+    <table>
+      <tr>
+        <td><a [routerLink]="['/user/company']" class="btn btn-primary" routerLinkActive="router-link-active">Company</a> </td>
+        <td><a [routerLink]="['/user/charts']" class="btn btn-primary" routerLinkActive="router-link-active">Charts</a> </td>
+        <td><a [routerLink]="['/user/ipo']" class="btn btn-primary" routerLinkActive="router-link-active">IPO</a> </td>
+      </tr>
+    </table>
+</div>
+<router-outlet></router-outlet>
