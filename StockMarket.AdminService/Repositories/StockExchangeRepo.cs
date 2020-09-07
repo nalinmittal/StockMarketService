@@ -23,7 +23,7 @@ namespace StockMarket.AdminService.Repositories
                 var exchange = new StockExchange
                 {
                     Id = entity.Id,
-                    Stockexchange = entity.Stockexchange,
+                    //Stockexchange = entity.Stockexchange,
                     Brief = entity.Brief,
                     Remarks = entity.Remarks,
                     Contactaddress = entity.Contactaddress,
@@ -55,7 +55,7 @@ namespace StockMarket.AdminService.Repositories
                 StockExchangeDto exchangeDto = new StockExchangeDto
                 {
                     Id = exchange.Id,
-                    Stockexchange = exchange.Stockexchange,
+                    //Stockexchange = exchange.Stockexchange,
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,
@@ -76,7 +76,7 @@ namespace StockMarket.AdminService.Repositories
             StockExchangeDto exchangeDto = new StockExchangeDto
             {
                 Id = exchange.Id,
-                Stockexchange = exchange.Stockexchange,
+                //Stockexchange = exchange.Stockexchange,
                 Brief = exchange.Brief,
                 Remarks = exchange.Remarks,
                 Contactaddress = exchange.Contactaddress,
@@ -109,14 +109,15 @@ namespace StockMarket.AdminService.Repositories
 
         IEnumerable<StockExchangeDto> IRepo<StockExchangeDto>.GetMatching(string name)
         {
-            var exchanges = context.StockExchanges.Where(e => e.Stockexchange.Contains(name));
+
+            var exchanges = this.context.StockExchanges.Where(e => e.Id.Contains(name));
             List<StockExchangeDto> exchangeDtos = new List<StockExchangeDto>();
             foreach (var exchange in exchanges)
             {
                 StockExchangeDto exchangeDto = new StockExchangeDto
                 {
                     Id = exchange.Id,
-                    Stockexchange = exchange.Stockexchange,
+                    //Stockexchange = exchange.Stockexchange,
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,

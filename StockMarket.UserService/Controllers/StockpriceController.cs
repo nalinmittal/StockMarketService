@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using StockMarket.UserService.Repositories;
+using StockMarket.Dtos;
 
 namespace StockMarket.UserService.Controllers
 {
@@ -19,11 +20,6 @@ namespace StockMarket.UserService.Controllers
             this.repository = repository;
         }
 
-        [HttpGet]
-        public IEnumerable<StockPrice> Get()
-        {
-            return repository.Get();
-        }
 
         [HttpPost]
         public IActionResult Post([FromForm] StockPrice stockprice)
@@ -80,17 +76,12 @@ namespace StockMarket.UserService.Controllers
             return StatusCode(500, "Internal Server Error");
         }
 
-        [HttpGet("/api/students2/searchbycompany")]
-        public IEnumerable<StockPrice> Get(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        [HttpGet("/api/stockprice/chart")]
+        public IEnumerable<StockPrice> Get(StockPriceDto stockpricedto)
         {
-            return repository.Search(from, to, company, stockExchange);
+            return repository.Search(stockpricedto);
         }
 
-        [HttpGet("/api/students2/searchbysector")]
-        public IEnumerable<StockPrice> Get(DateTime from, DateTime to, Sector sector)
-        {
-            return repository.Search(from, to, sector);
-        }
-
+      
     }
 }
