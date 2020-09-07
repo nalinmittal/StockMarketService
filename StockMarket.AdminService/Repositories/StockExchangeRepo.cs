@@ -22,8 +22,7 @@ namespace StockMarket.AdminService.Repositories
             {
                 var exchange = new StockExchange
                 {
-                    Id = entity.Id,
-                    //Stockexchange = entity.Stockexchange,
+                    Stockexchange = entity.Stockexchange,
                     Brief = entity.Brief,
                     Remarks = entity.Remarks,
                     Contactaddress = entity.Contactaddress,
@@ -54,14 +53,13 @@ namespace StockMarket.AdminService.Repositories
             {
                 StockExchangeDto exchangeDto = new StockExchangeDto
                 {
-                    Id = exchange.Id,
-                    //Stockexchange = exchange.Stockexchange,
+                    Stockexchange = exchange.Stockexchange,
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,
                     CompanyIds = new List<long>()
                 };
-                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.StockExchangeId==exchange.Id))
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c=>c.StockExchangeId==exchange.Stockexchange))
                 {
                     exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
                 }
@@ -75,14 +73,13 @@ namespace StockMarket.AdminService.Repositories
             var exchange = this.context.StockExchanges.Find(key);
             StockExchangeDto exchangeDto = new StockExchangeDto
             {
-                Id = exchange.Id,
-                //Stockexchange = exchange.Stockexchange,
+                Stockexchange = exchange.Stockexchange,
                 Brief = exchange.Brief,
                 Remarks = exchange.Remarks,
                 Contactaddress = exchange.Contactaddress,
                 CompanyIds = new List<long>()
             };
-            foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Id))
+            foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Stockexchange))
             {
                 exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
             }
@@ -110,20 +107,19 @@ namespace StockMarket.AdminService.Repositories
         IEnumerable<StockExchangeDto> IRepo<StockExchangeDto>.GetMatching(string name)
         {
 
-            var exchanges = this.context.StockExchanges.Where(e => e.Id.Contains(name));
+            var exchanges = this.context.StockExchanges.Where(e => e.Stockexchange.Contains(name));
             List<StockExchangeDto> exchangeDtos = new List<StockExchangeDto>();
             foreach (var exchange in exchanges)
             {
                 StockExchangeDto exchangeDto = new StockExchangeDto
                 {
-                    Id = exchange.Id,
-                    //Stockexchange = exchange.Stockexchange,
+                    Stockexchange = exchange.Stockexchange,
                     Brief = exchange.Brief,
                     Remarks = exchange.Remarks,
                     Contactaddress = exchange.Contactaddress,
                     CompanyIds = new List<long>()
                 };
-                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Id))
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.StockExchangeId == exchange.Stockexchange))
                 {
                     exchangeDto.CompanyIds.Add(companyStockExchange.CompanyId);
                 }

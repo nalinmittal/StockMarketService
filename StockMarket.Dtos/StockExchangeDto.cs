@@ -7,7 +7,6 @@ namespace StockMarket.Dtos
 {
     public class StockExchangeDto
     {
-        public string Id { get; set; }
         [Required]
         public string Stockexchange { get; set; }
         [Required]

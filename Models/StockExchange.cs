@@ -16,7 +16,5 @@ namespace Models
         public string Contactaddress { get; set; }
         [Required]
         public string Remarks { get; set; }
-   
-
     }
 }

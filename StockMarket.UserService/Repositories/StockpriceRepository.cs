@@ -87,9 +87,9 @@ namespace StockMarket.UserService.Repositories
         {
             var stockPrices = context.StockPrices.Where(s =>
 
-                 s.CompanyStockExchange.CompanyId == stockpricedto.CompanyId &&
+                 s.CompanyId == stockpricedto.CompanyId &&
 
-                 s.CompanyStockExchange.StockExchangeId == stockpricedto.StockExchangeId &&
+                 s.StockExchangeId == stockpricedto.StockExchangeId &&
 
                  Convert.ToDateTime(s.Date + ' ' + s.Time) >= stockpricedto.from &&
 

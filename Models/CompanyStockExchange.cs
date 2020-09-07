@@ -12,7 +12,7 @@ namespace Models
         public Company Company { get; set; }
         public StockExchange StockExchange { get; set; }
         [ForeignKey("Company")]
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         [ForeignKey("StockExchange")]
         public string StockExchangeId { get; set; }
 
