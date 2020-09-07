@@ -1,3 +1,17 @@
-<p>login works!</p>
+<br>
+<div class="container">
+  <table class="table table-bordered" border="1" style="width:300px;">
+    <tr>
+      <td>UserName</td>
+      <td><input type="text" [(ngModel)]="item.userName"></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" [(ngModel)]="item.password"></td>
+    </tr>
+    
+    </table>
+  </div>
+  
 <button (click)="Validate()">Login</button>
 <router-outlet></router-outlet>
