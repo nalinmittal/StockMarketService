@@ -41,9 +41,9 @@ namespace StockMarket.AdminService.Repositories
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return false;
             }
         }
 

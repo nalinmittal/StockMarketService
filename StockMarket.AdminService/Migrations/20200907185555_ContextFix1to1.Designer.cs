@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockMarket.AdminService.Data;
 
 namespace StockMarket.AdminService.Migrations
 {
     [DbContext(typeof(AdminContext))]
-    partial class AdminContextModelSnapshot : ModelSnapshot
+    [Migration("20200907185555_ContextFix1to1")]
+    partial class ContextFix1to1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

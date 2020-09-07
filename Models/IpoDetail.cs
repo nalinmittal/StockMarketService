@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -19,7 +20,15 @@ namespace Models
         public DateTime Opendatetime { get; set; }
         [Required]
         public string Remarks { get; set; }
+        //[Required]
+        //public virtual CompanyStockExchange CompanyStockExchange { get; set; }
         [Required]
-        public virtual CompanyStockExchange CompanyStockExchange { get; set; }
+        [ForeignKey("Company")]
+        public long CompanyId { get; set; }
+        [Required]
+        [ForeignKey("StockExchange")]
+        public string StockExchangeId { get; set; }
+
+
     }
 }

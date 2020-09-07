@@ -11,8 +11,8 @@ namespace StockMarket.Dtos
         [Required]
         public DateTime DateTime { get; set; }
         [Required]
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         [Required]
-        public long StockExchangeId { get; set; }
+        public string StockExchangeId { get; set; }
     }
 }
