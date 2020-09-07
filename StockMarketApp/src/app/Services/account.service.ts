@@ -19,6 +19,6 @@ export class AccountService {
   }
   public Validate(usertype:UserType,pwd:string):Observable<Token>
   {
-    return this.service.get<Token>(this.url+usertype+'/'+pwd);
+    return this.http.get<Token>(this.url+usertype+'/'+pwd);
   }
 }

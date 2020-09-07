@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {ReactiveFormsModule} from "@angular/forms";
 import {  FormsModule} from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountService } from "src/app/Services/account.service";
@@ -31,7 +30,7 @@ import { CompanyComponent } from './Components/Admin/company/company.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AccountService
+  providers: [AccountService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

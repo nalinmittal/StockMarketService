@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../services/account';
+import { AccountService } from 'src/app/Services/account.service';
+import { Account } from 'src/app/Models/account';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,8 +9,9 @@ import { Router } from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor((private service:AccountService,private router:Router) { 
+  item:Account;
+  constructor(private service:AccountService,private router:Router) { 
+    this.item=new Account();
     localStorage.clear();
   }
 
@@ -17,23 +19,6 @@ export class LoginComponent implements OnInit {
   }
   Validate()
   {
-    this.service.Validate('Admin','12345').subscribe(res=>{
-      if(res.usertype=='Admin')
-      {
-        localStorage.setItem('token',res.token)
-      console.log(res)
-      this.router.navigateByUrl('item');
-      }
-      else if(res.token==""||res.token==null)
-      {
-        console.log('Invalid Id');
-      }
-      else
-      {
-      localStorage.setItem('token',res.token)
-      console.log(res)
-      this.router.navigateByUrl('item');
-      }
-    })
+    
   }
-
+}
