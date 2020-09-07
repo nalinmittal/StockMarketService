@@ -22,9 +22,7 @@ namespace Models
         public float Turnover { get; set; }
         [Required]
         public string Ceo { get; set; }
-        [Required]
         public string Boardofdirectors { get; set; }
-        //public virtual ICollection<CompanyStockExchange> CompanyStockExchanges { get; set; }
         public virtual Sector Sector { get; set; }
         [Required]
         public string Brief { get; set; }

@@ -11,10 +11,9 @@ namespace Models
     {
         public Company Company { get; set; }
         public StockExchange StockExchange { get; set; }
-        [Required]
-        public long CompanyId { get; set; }
-        [Required]
-        //[ForeignKey("StockExchange")]
+        [ForeignKey("Company")]
+        public int CompanyId { get; set; }
+        [ForeignKey("StockExchange")]
         public string StockExchangeId { get; set; }
 
     }
