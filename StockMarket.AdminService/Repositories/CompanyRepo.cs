@@ -95,7 +95,7 @@ namespace StockMarket.AdminService.Repositories
                     Ceo = company.Ceo,
                     Boardofdirectors = company.Boardofdirectors,
                     Brief = company.Brief,
-                    StockExchangeIds = new List<long>()
+                    StockExchangeIds = new List<string>()
                 };
                 foreach(var companystockexchange in company.CompanyStockExchanges)
                 {
@@ -117,7 +117,7 @@ namespace StockMarket.AdminService.Repositories
                 Ceo = company.Ceo,
                 Boardofdirectors = company.Boardofdirectors,
                 Brief = company.Brief,
-                StockExchangeIds = new List<long>()
+                StockExchangeIds = new List<string>()
             };
             foreach (var companystockexchange in company.CompanyStockExchanges)
             {
@@ -140,7 +140,7 @@ namespace StockMarket.AdminService.Repositories
                     Ceo = company.Ceo,
                     Boardofdirectors = company.Boardofdirectors,
                     Brief = company.Brief,
-                    StockExchangeIds = new List<long>()
+                    StockExchangeIds = new List<string>()
                 };
                 foreach (var companystockexchange in company.CompanyStockExchanges)
                 {

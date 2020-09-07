@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using StockMarket.UserService.Data;
 using Microsoft.EntityFrameworkCore;
+using StockMarket.Dtos;
 
 namespace StockMarket.UserService.Repositories
 {
@@ -82,24 +83,18 @@ namespace StockMarket.UserService.Repositories
             }
         }
 
-        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        public IEnumerable<StockPrice> Search(StockPriceDto stockpricedto)
         {
             var stockPrices = context.StockPrices.Where(s =>
 
-                 s.CompanyStockExchange.CompanyId == company.Id &&
+                 s.CompanyStockExchange.CompanyId == stockpricedto.CompanyId &&
 
-                 s.CompanyStockExchange.StockExchangeId == stockExchange.Id &&
+                 s.CompanyStockExchange.StockExchangeId == stockpricedto.StockExchangeId &&
 
-                 Convert.ToDateTime(s.Date + ' ' + s.Time) >= from &&
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) >= stockpricedto.from &&
 
-                 Convert.ToDateTime(s.Date + ' ' + s.Time) <= to);
+                 Convert.ToDateTime(s.Date + ' ' + s.Time) <= stockpricedto.to);
             return stockPrices;
-        }
-
-        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
-        { 
-            var stockprices = context.StockPrices.Where(t => t.Company.Sector.Sectorname == sector.Sectorname);
-            return stockprices;
         }
     }
 }

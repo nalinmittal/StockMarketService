@@ -5,14 +5,9 @@ namespace StockMarket.Dtos
 {
     public class StockPriceDto
     {
-        public int Id { get; set; }
-        [Required]
-        public float CurrentPrice { get; set; }
-        [Required]
-        public DateTime DateTime { get; set; }
-        [Required]
+        public DateTime to { get; set; }
+        public DateTime from { get; set; }
         public int CompanyId { get; set; }
-        [Required]
-        public long StockExchangeId { get; set; }
+        public string StockExchangeId { get; set; }
     }
 }
