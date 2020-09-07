@@ -51,6 +51,8 @@ namespace StockMarket.AdminService.Repositories
                 {
                     return true;
                 }
+                context.Remove(company);
+                context.SaveChanges();
                 return false;
             }
             catch(Exception)
@@ -74,12 +76,17 @@ namespace StockMarket.AdminService.Repositories
                     //CompanyStockExchanges = new List<CompanyStockExchange>()
                 };
                 context.Remove(company);
+                int updates = context.SaveChanges();
+                if(updates==0)
+                {
+                    return false;
+                }
                 foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId==entity.Id))
                 {
                     context.CompanyStockExchanges.Remove(companyStockExchange);
                 }
-                int updates = context.SaveChanges();
-                if (updates > 0)
+                int updates2 = context.SaveChanges();
+                if (updates2 > 0)
                 {
                     return true;
                 }
