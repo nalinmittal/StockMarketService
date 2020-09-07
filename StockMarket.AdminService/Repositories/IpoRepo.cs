@@ -24,12 +24,14 @@ namespace StockMarket.AdminService.Repositories
             {
                 var ipo = new IpoDetail
                 {
-                    Id = entity.Id,
+                    //Id = entity.Id,
                     Pricepershare = entity.Pricepershare,
                     Totalnumberofshares = entity.Totalnumberofshares,
                     Remarks = entity.Remarks,
                     Opendatetime = entity.Opendatetime,
-                    CompanyStockExchange = this.context.CompanyStockExchanges.Find(entity.CompanyId,entity.StockExchangeId)
+                    CompanyId = entity.CompanyId,
+                    StockExchangeId = entity.StockExchangeId
+                    //CompanyStockExchange = this.context.CompanyStockExchanges.Find(entity.CompanyId,entity.StockExchangeId)
                 };
                 this.context.Add(ipo);
                 int updates = context.SaveChanges();
@@ -57,8 +59,8 @@ namespace StockMarket.AdminService.Repositories
                     Totalnumberofshares = ipo.Totalnumberofshares,
                     Remarks = ipo.Remarks,
                     Opendatetime = ipo.Opendatetime,
-                    CompanyId = ipo.CompanyStockExchange.CompanyId,
-                    StockExchangeId = ipo.CompanyStockExchange.StockExchangeId
+                    CompanyId = ipo.CompanyId,
+                    StockExchangeId = ipo.StockExchangeId
                 };
                 ipos.Add(ipoDto);
             }
@@ -75,18 +77,19 @@ namespace StockMarket.AdminService.Repositories
                 Totalnumberofshares = ipo.Totalnumberofshares,
                 Remarks = ipo.Remarks,
                 Opendatetime = ipo.Opendatetime,
-                CompanyId = ipo.CompanyStockExchange.CompanyId,
-                StockExchangeId = ipo.CompanyStockExchange.StockExchangeId
+                CompanyId = ipo.CompanyId,
+                StockExchangeId = ipo.StockExchangeId
             };
             return ipoDto;
         }
 
         IEnumerable<IpoDetailDto> IRepo<IpoDetailDto>.GetMatching(string name)
         {
-            var ipos = this.context.Ipos.Where(i => i.CompanyStockExchange.Company.Companyname.Contains(name));
+            var companies = context.Companies.Where(c => c.Companyname.Contains(name));
             List<IpoDetailDto> ipoDtos = new List<IpoDetailDto>();
-            foreach (var ipo in ipos)
+            foreach (var company in companies)
             {
+                var ipo = context.Ipos.Where(i => i.CompanyId == company.Id).ToList()[0];
                 IpoDetailDto ipoDto = new IpoDetailDto
                 {
                     Id = ipo.Id,
@@ -94,8 +97,8 @@ namespace StockMarket.AdminService.Repositories
                     Totalnumberofshares = ipo.Totalnumberofshares,
                     Remarks = ipo.Remarks,
                     Opendatetime = ipo.Opendatetime,
-                    CompanyId = ipo.CompanyStockExchange.CompanyId,
-                    StockExchangeId = ipo.CompanyStockExchange.StockExchangeId
+                    CompanyId = ipo.CompanyId,
+                    StockExchangeId = ipo.StockExchangeId
                 };
                 ipoDtos.Add(ipoDto);
             }

@@ -14,7 +14,7 @@ namespace Models
         //{
         //    CompanyStockExchanges = new HashSet<CompanyStockExchange>();
         //}
-        //[Key]
+        [Key]
         public long Id { get; set; }
         [Required]
         public string Companyname { get; set; }
