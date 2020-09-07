@@ -34,11 +34,7 @@ namespace StockMarket.AccountService.Repositories
                 {
                     result = new Tuple<bool, string>(false, "");
                 }
-                else
-                {
-                    var token = GenerateJwtToken(account);
-                    result = new Tuple<bool, string>(true, token);
-                }
+                
                 return result;
             }
             catch (Exception ex)
@@ -46,7 +42,7 @@ namespace StockMarket.AccountService.Repositories
                 throw ex;
             }
         }
-
+/*
         private object GenerateJwtToken(object account)
         {
             throw new NotImplementedException();
@@ -79,6 +75,7 @@ namespace StockMarket.AccountService.Repositories
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+*/
 
         public bool Logout()
         {
