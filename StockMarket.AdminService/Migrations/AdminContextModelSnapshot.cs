@@ -27,7 +27,6 @@ namespace StockMarket.AdminService.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Boardofdirectors")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Brief")
@@ -38,19 +37,19 @@ namespace StockMarket.AdminService.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Company")
+                        .HasColumnType("int");
+
                     b.Property<string>("Companyname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SectorId")
-                        .HasColumnType("int");
 
                     b.Property<float>("Turnover")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SectorId");
+                    b.HasIndex("Company");
 
                     b.ToTable("company");
                 });
@@ -124,7 +123,7 @@ namespace StockMarket.AdminService.Migrations
 
             modelBuilder.Entity("Models.StockExchange", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("Stockexchange")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Brief")
@@ -139,11 +138,7 @@ namespace StockMarket.AdminService.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Stockexchange")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("Stockexchange");
 
                     b.ToTable("StockExchanges");
                 });
@@ -155,17 +150,17 @@ namespace StockMarket.AdminService.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("CompanyStockExchangeCompanyId")
+                    b.Property<long>("CompanyId")
                         .HasColumnType("bigint");
-
-                    b.Property<string>("CompanyStockExchangeStockExchangeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<float>("CurrentPrice")
                         .HasColumnType("real");
 
                     b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StockExchangeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -175,8 +170,6 @@ namespace StockMarket.AdminService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyStockExchangeCompanyId", "CompanyStockExchangeStockExchangeId");
-
                     b.ToTable("StockPrices");
                 });
 
@@ -184,7 +177,7 @@ namespace StockMarket.AdminService.Migrations
                 {
                     b.HasOne("Models.Sector", "Sector")
                         .WithMany("Companylist")
-                        .HasForeignKey("SectorId");
+                        .HasForeignKey("Company");
                 });
 
             modelBuilder.Entity("Models.CompanyStockExchange", b =>
@@ -196,17 +189,8 @@ namespace StockMarket.AdminService.Migrations
                         .IsRequired();
 
                     b.HasOne("Models.StockExchange", "StockExchange")
-                        .WithMany("CompanyStockExchanges")
-                        .HasForeignKey("StockExchangeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Models.StockPrice", b =>
-                {
-                    b.HasOne("Models.CompanyStockExchange", "CompanyStockExchange")
                         .WithMany()
-                        .HasForeignKey("CompanyStockExchangeCompanyId", "CompanyStockExchangeStockExchangeId")
+                        .HasForeignKey("StockExchangeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

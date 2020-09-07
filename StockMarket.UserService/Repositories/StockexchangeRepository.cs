@@ -1,4 +1,5 @@
 ﻿using Models;
+using StockMarket.UserService.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,12 +50,12 @@ namespace StockMarket.UserService.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
+        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Company company, StockExchange stockExchange)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Stockprice> Search(DateTime from, DateTime to, Sector sector)
+        public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
         {
             throw new NotImplementedException();
         }
