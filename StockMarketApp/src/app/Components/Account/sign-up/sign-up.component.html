@@ -1,0 +1,37 @@
+<br>
+<div class="container">
+  <table class="table table-bordered" border="1" style="width:300px;">
+    <tr>
+      <td>UserId</td>
+      <td><input type="text" [(ngModel)]="item.id"></td>
+    </tr>
+    <tr>
+      <td>UserName</td>
+      <td><input type="text" [(ngModel)]="item.userName"></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" [(ngModel)]="item.password"></td>
+    </tr>
+    <tr>
+      <td>EmailId</td>
+      <td><input type="text" [(ngModel)]="item.email"></td>
+    </tr>
+    <tr>
+      <td>Mobile</td>
+      <td><input type="text" [(ngModel)]="item.mobile"></td>
+    </tr>
+    <tr>
+      <td>UserType</td>
+      <td><select [(ngModel)]="item.userType">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="btn btn-info" (click)="SignUp()">SignUp</button>
+      </td>
+    </tr>
+  </table>
+</div>
