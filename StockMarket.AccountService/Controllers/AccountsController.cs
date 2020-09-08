@@ -85,7 +85,7 @@ namespace StockMarket.AccountService.Controllers
         public IActionResult Get()
         {
             repository.Logout();
-            return Ok("logged out");
+            return Ok("logged out.");
         }
 
 
