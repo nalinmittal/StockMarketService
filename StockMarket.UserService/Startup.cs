@@ -32,6 +32,21 @@ namespace StockMarket.UserService
         {
             services.AddDbContext<StockMarketContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+            services.AddCors(c =>
+
+            {
+
+                c.AddPolicy("AllowOrigin", options =>
+
+         options.AllowAnyOrigin()
+
+                .AllowAnyMethod()
+
+                .AllowAnyHeader()
+
+                );
+
+            });
             services.AddControllers();
             services.AddScoped<IRepository<Company>, CompanyRepository>();
             services.AddScoped<IStockPriceRepository<StockPrice>, StockPriceRepository>();
@@ -52,7 +67,7 @@ namespace StockMarket.UserService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

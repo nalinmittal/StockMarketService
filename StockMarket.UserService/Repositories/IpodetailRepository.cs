@@ -56,7 +56,7 @@ namespace StockMarket.UserService.Repositories
 
         public IEnumerable<IpoDetail> Get()
         {
-            var ipodetails = this.context.Ipos;
+            var ipodetails = this.context.Ipos.OrderBy(i=>i.Opendatetime);
             return ipodetails;
         }
 

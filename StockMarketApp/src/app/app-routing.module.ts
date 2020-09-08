@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: LandingComponent
-  }
+  },
   {path:'user',component:UserLandingComponent,children:[
       {path:'company',component:UserCompanyComponent},
       {path:'charts',component:UserChartsComponent},
