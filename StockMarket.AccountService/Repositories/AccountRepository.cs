@@ -34,6 +34,10 @@ namespace StockMarket.AccountService.Repositories
                 {
                     result = new Tuple<bool, string>(false, "");
                 }
+                else
+                {
+                    result = new Tuple<bool, string>(true, "1");
+                }
                 
                 return result;
             }
