@@ -37,7 +37,7 @@ namespace StockMarket.AccountService.Controllers
         [Route("Login/{usertype}/{pwd}")]
         public IActionResult Validate(UserType usertype,string pwd)
         {
-            if (usertype == Admin && pwd == "12345")
+            if (usertype == UserType.Admin && pwd == "12345")
             {
                 try
                 {
@@ -55,10 +55,9 @@ namespace StockMarket.AccountService.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub,userType),
+                new Claim(JwtRegisteredClaimNames.Sub,userType.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier,userType),
-                new Claim(ClaimTypes.Role,userType)
+                new Claim(ClaimTypes.Role,userType.ToString())
             };
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtKey"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -74,7 +73,7 @@ namespace StockMarket.AccountService.Controllers
 
             var response = new Token
             {
-                usertype=userType,
+                UserType=userType,
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             };
             return response;

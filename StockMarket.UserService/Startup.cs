@@ -36,6 +36,7 @@ namespace StockMarket.UserService
             services.AddScoped<IRepository<Company>, CompanyRepository>();
             services.AddScoped<IStockPriceRepository<StockPrice>, StockPriceRepository>();
             services.AddScoped<IRepository<IpoDetail>, IpoDetailRepository>();
+            services.AddScoped<IRepository<StockExchange>, StockexchangeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
