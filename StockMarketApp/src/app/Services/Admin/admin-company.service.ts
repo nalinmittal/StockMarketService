@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class AdminCompanyService 
 {
 
-  path:string = "https://localhost:44337/api/company"
+  path:string = "http://localhost:1601/admin/company"
 
   constructor(private http:HttpClient) { }
 
