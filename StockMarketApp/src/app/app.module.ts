@@ -18,7 +18,7 @@ import { UserLandingComponent } from './Components/User/user-landing/user-landin
 import { UserCompanyComponent } from './Components/User/user-company/user-company.component';
 import { UserIpoComponent } from './Components/User/user-ipo/user-ipo.component';
 import { UserChartsComponent } from './Components/User/user-charts/user-charts.component';
-import {IpoDetailsService} from '../app/services/User/ipo-details.service'
+import {UserService} from '../app/services/user.service'
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {IpoDetailsService} from '../app/services/User/ipo-details.service'
     HttpClientModule,
     FormsModule
   ],
-  providers: [AccountService, IpoDetailsService,
+  providers: [AccountService, UserService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

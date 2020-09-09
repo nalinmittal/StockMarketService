@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IpoDetailsService} from '../../../services/User/ipo-details.service'
+import {UserService} from '../../../services/user.service'
 import { IpoDetail } from '../../../models/ipo-detail';
 
 @Component({
@@ -9,7 +9,7 @@ import { IpoDetail } from '../../../models/ipo-detail';
 })
 export class UserIpoComponent implements OnInit {
   ipoDetails : IpoDetail[];
-  constructor(private service:IpoDetailsService) { 
+  constructor(private service:UserService) { 
     this.ipoDetails = [];
   }
 
@@ -20,5 +20,6 @@ export class UserIpoComponent implements OnInit {
       this.ipoDetails = ipoDetails;
     })
   }
+  
 
 }
