@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../services/user.service'
+import { Company } from '../../../models/company';
 
 @Component({
   selector: 'app-user-company',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-company.component.css']
 })
 export class UserCompanyComponent implements OnInit {
-
-  constructor() { }
+  item : Company
+  Id : string
+  constructor(private service:UserService) 
+  {
+    this.item = new Company();
+  }
 
   ngOnInit(): void {
   }
+  public GetCompany()
+  {
+    this.service.GetCompany(this.Id).subscribe((item:Company)=>{
+      this.item=item[0]
+      console.log(this.item)
+    },(err)=>{
+      console.log(err.error)
+    })
+  }
+  
 
 }
