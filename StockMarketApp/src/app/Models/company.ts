@@ -1,10 +1,10 @@
 export class Company {
-    public companyId:number;
-    public companyName:string;
+    public id:number;
+    public companyname:string;
     public turnover:number;
     public ceo:string;
     public boardOfDirectors:string;
-    public stockExchangeIds:number[];
+    public stockExchangeIds:string[];
     public sectorId:number;
     public brief:string;
 }

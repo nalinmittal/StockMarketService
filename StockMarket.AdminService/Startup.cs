@@ -31,6 +31,15 @@ namespace StockMarket.AdminService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                );
+            });
+
             services.AddDbContext<AdminContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
@@ -51,6 +60,8 @@ namespace StockMarket.AdminService
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowOrigin");
 
             app.UseAuthorization();
 

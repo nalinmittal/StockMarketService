@@ -43,8 +43,7 @@
         }
       ],
       "UpstreamPathTemplate": "/adminservice"
-    }
-  ],
+    },
   {
     "DownstreamPathTemplate": "/api/user/{url}",
     "DownstreamScheme": "https",
@@ -66,11 +65,9 @@
       }
     ],
     "UpstreamPathTemplate": "/userservice"
-  },
+  }
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:44304"
   }
-}{
-
 }
