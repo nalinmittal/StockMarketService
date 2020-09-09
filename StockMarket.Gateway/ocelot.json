@@ -23,49 +23,115 @@
       "UpstreamPathTemplate": "/accountervice/{url}"
     },
     {
-      "DownstreamPathTemplate": "/api/admin/{url}",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/company/{url}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44337
+          "Port": 1600
         }
       ],
-      "UpstreamPathTemplate": "/adminservice/{url}"
+      "UpstreamPathTemplate": "/admin/company/{url}"
     },
     {
-      "DownstreamPathTemplate": "/api/admin",
+      "DownstreamPathTemplate": "/api/company",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/company"
+    },
+    {
+      "DownstreamPathTemplate": "/api/stockexchange/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/stockexchange/{url}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/stockexchange",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/stockexchange"
+    },
+    {
+      "DownstreamPathTemplate": "/api/ipo/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/ipo/{url}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/ipo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/admin/ipo"
+    },
+    {
+      "DownstreamPathTemplate": "/api/upload/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/upload/{url}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/upload",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 1600
+        }
+      ],
+      "UpstreamPathTemplate": "/upload"
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/{url}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44337
+          "Port": 44354
         }
       ],
-      "UpstreamPathTemplate": "/adminservice"
+      "UpstreamPathTemplate": "/userservice/{url}"
     },
-  {
-    "DownstreamPathTemplate": "/api/user/{url}",
-    "DownstreamScheme": "https",
-    "DownstreamHostAndPorts": [
-      {
-        "Host": "localhost",
-        "Port": 44354
-      }
-    ],
-    "UpstreamPathTemplate": "/userservice/{url}"
-  },
-  {
-    "DownstreamPathTemplate": "/api/user",
-    "DownstreamScheme": "https",
-    "DownstreamHostAndPorts": [
-      {
-        "Host": "localhost",
-        "Port": 44354
-      }
-    ],
-    "UpstreamPathTemplate": "/userservice"
-  }
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44354
+        }
+      ],
+      "UpstreamPathTemplate": "/userservice"
+    }
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:44304"
