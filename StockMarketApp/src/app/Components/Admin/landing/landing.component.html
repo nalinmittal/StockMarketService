@@ -1,25 +1,40 @@
 <br>
 <div class="container">
-    <h1>Admin Dashboard</h1>
+    <h1 style="text-align: center;">Admin Dashboard</h1>
 </div>
 <br>
 
-<div class="container">  
+<!-- <div class="container">  
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>
-                    <button type="button" class="btn btn-primary">Company</button>
+                    <a [routerLink]="['/admin/company']" class="btn btn-primary btn-block custom" routerLinkActive="router-link-active">Companies</a>
                 </th>
                 <th>
-                    <button type="button" class="btn btn-primary">IPO</button>
+                    <a [routerLink]="['/admin/ipo']" class="btn btn-primary btn-block custom" routerLinkActive="router-link-active">IPOs</a>
                 </th>
                 <th>
-                    <button type="button" class="btn btn-primary">StockExchange</button>
+                    <a [routerLink]="['/admin/exchange']" class="btn btn-primary btn-block custom" routerLinkActive="router-link-active">Stock Exchanges</a>
+                </th>
+                <th>
+                    <a class="btn btn-primary btn-block custom">Import Data</a>
                 </th>
             </tr>
         </thead>
     </table>
-    
+</div> -->
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 50px; width: 700px;">  
+    <a [routerLink]="['/admin/company']" class="btn btn-secondary custom" routerLinkActive="router-link-active">Companies</a>
+    <a [routerLink]="['/admin/ipo']" class="btn btn-secondary custom" routerLinkActive="router-link-active">IPOs</a>
+    <a [routerLink]="['/admin/exchange']" class="btn btn-secondary custom" routerLinkActive="router-link-active">Stock Exchange</a>
+    <a [routerLink]="['/admin/upload']" class="btn btn-secondary custom" routerLinkActive="router-link-active">Import Data</a> 
 </div>
+
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
 
