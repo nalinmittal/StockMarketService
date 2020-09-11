@@ -86,14 +86,14 @@ namespace StockMarket.AdminService.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(long id)
         {
             var company = this.repository.Get(id);
             if(company==null)
             {
                 return NotFound();
             }
-            var isDeleted = this.repository.Delete(company);
+            var isDeleted = this.repository.Delete(id);
             if(isDeleted)
             {
                 return Ok("Company deleted succesfully");
