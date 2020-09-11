@@ -33,18 +33,19 @@ namespace StockMarket.AdminService.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public CompanyDto Get(int id)
+        public CompanyDto Get(long id)
         {
             return this.repository.Get(id);
         }
 
-        [HttpGet("{name}")]
+
+        [HttpGet]
+        [Route("/search/{name}")]
         public IEnumerable<CompanyDto> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);
         }
 
-        // POST api/<CompanyController>
         [HttpPost]
         public IActionResult Post([FromForm] CompanyDto company)
         {
