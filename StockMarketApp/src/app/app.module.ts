@@ -22,6 +22,8 @@ import { AdminIpoLandingComponent } from './Components/Admin/Ipo/admin-ipo-landi
 import { AdminCompanyLandingComponent } from './Components/Admin/Company/admin-company-landing/admin-company-landing.component';
 import { AdminExchangeLandingComponent } from './Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component'
 import { AdminCompanyService } from './Services/Admin/admin-company.service';
+import { ChartsModule } from 'ng2-charts';
+import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar-chart.component';
 
 
 
@@ -39,13 +41,15 @@ import { AdminCompanyService } from './Services/Admin/admin-company.service';
     LoginComponent,
     AdminIpoLandingComponent,
     AdminCompanyLandingComponent,
-    AdminExchangeLandingComponent
+    AdminExchangeLandingComponent,
+    UserBarChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
 
   providers: [AccountService, UserService,
