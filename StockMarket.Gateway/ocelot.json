@@ -45,7 +45,7 @@
       "UpstreamPathTemplate": "/adminservice"
     },
   {
-    "DownstreamPathTemplate": "/api/user/{url}",
+    "DownstreamPathTemplate": "/api/{url}",
     "DownstreamScheme": "https",
     "DownstreamHostAndPorts": [
       {
@@ -56,7 +56,7 @@
     "UpstreamPathTemplate": "/userservice/{url}"
   },
   {
-    "DownstreamPathTemplate": "/api/user",
+    "DownstreamPathTemplate": "/api/",
     "DownstreamScheme": "https",
     "DownstreamHostAndPorts": [
       {
