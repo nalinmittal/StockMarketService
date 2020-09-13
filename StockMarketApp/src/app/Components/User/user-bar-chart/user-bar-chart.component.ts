@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StockPriceDto } from '../../../models/stock-price-dto';
 
 @Component({
   selector: 'app-user-bar-chart',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-bar-chart.component.css']
 })
 export class UserBarChartComponent implements OnInit {
-
-  constructor() { }
+  item : StockPriceDto;
+  constructor() { 
+    this.item = new StockPriceDto();
+  }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -21,5 +24,13 @@ export class UserBarChartComponent implements OnInit {
   ];
   ngOnInit(): void {
   }
-
+  public GetStockPriceList()
+  {
+    this.service.GetCompany(this.item).subscribe((item:Company)=>{
+      this.item=item[0]
+      console.log(this.item)
+    },(err)=>{
+      console.log(err.error)
+    })
+  }
 }
