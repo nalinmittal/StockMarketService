@@ -12,20 +12,25 @@ import { AccountLandingComponent } from './Components/Account/account-landing/ac
 import { AuthInterceptor } from './auth-interceptor';
 
 import { LandingComponent } from './Components/Admin/landing/landing.component';
-import { CompanyComponent } from './Components/Admin/company/company.component';
 //import { SrcComponent } from './src/src.component';
 import { UserLandingComponent } from './Components/User/user-landing/user-landing.component';
 import { UserCompanyComponent } from './Components/User/user-company/user-company.component';
 import { UserIpoComponent } from './Components/User/user-ipo/user-ipo.component';
 import { UserChartsComponent } from './Components/User/user-charts/user-charts.component';
-import {IpoDetailsService} from '../app/services/User/ipo-details.service'
+import {UserService} from '../app/services/user.service'
+import { AdminIpoLandingComponent } from './Components/Admin/Ipo/admin-ipo-landing/admin-ipo-landing.component';
+import { AdminCompanyLandingComponent } from './Components/Admin/Company/admin-company-landing/admin-company-landing.component';
+import { AdminExchangeLandingComponent } from './Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component'
+import { AdminCompanyService } from './Services/Admin/admin-company.service';
+import { ChartsModule } from 'ng2-charts';
+import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar-chart.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    CompanyComponent,
     //SrcComponent,
     UserLandingComponent,
     UserCompanyComponent,
@@ -33,20 +38,30 @@ import {IpoDetailsService} from '../app/services/User/ipo-details.service'
     UserChartsComponent,
     AccountLandingComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    AdminIpoLandingComponent,
+    AdminCompanyLandingComponent,
+    AdminExchangeLandingComponent,
+    UserBarChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
-  providers: [AccountService, IpoDetailsService,
+
+  providers: [AccountService, UserService,
+
+
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+    },
+    AdminCompanyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,19 @@
-<p>user-company works!</p>
+<div class="container">
+    <table class="table table-bordered" border="1" style="width:300px;">
+      <tr>
+        <td>Company ID</td>
+        <td><input type="text" [(ngModel)]="Id" class="form-control"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-info" (click)="GetCompany()">Get Company</button>
+        </td>
+      </tr>
+      
+    </table>
+    <ul>
+        <p>
+        {{ item.companyname }} • {{ item.turnover }} 
+        </p>
+    </ul>
+</div>

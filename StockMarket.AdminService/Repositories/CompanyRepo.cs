@@ -51,6 +51,8 @@ namespace StockMarket.AdminService.Repositories
                 {
                     return true;
                 }
+                context.Remove(company);
+                context.SaveChanges();
                 return false;
             }
             catch(Exception)
@@ -59,35 +61,28 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public bool Delete(CompanyDto entity)
+        public bool Delete(long key)
         {
             try
             {
-                var company = new Company
-                {
-                    Id = entity.Id,
-                    Companyname = entity.Companyname,
-                    Turnover = entity.Turnover,
-                    Ceo = entity.Ceo,
-                    Boardofdirectors = entity.Boardofdirectors,
-                    Brief = entity.Brief,
-                    //CompanyStockExchanges = new List<CompanyStockExchange>()
-                };
-                context.Remove(company);
-                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId==entity.Id))
+                var company = context.Companies.Find(key);
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId == key))
                 {
                     context.CompanyStockExchanges.Remove(companyStockExchange);
                 }
+                context.SaveChanges();
+                context.Companies.Remove(company);
                 int updates = context.SaveChanges();
-                if (updates > 0)
+                if(updates==0)
                 {
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw ex;
+                //return false;
             }
         }
 
@@ -164,7 +159,8 @@ namespace StockMarket.AdminService.Repositories
         {
             try
             {
-                this.context.Entry(entity).State = EntityState.Modified;
+                Company company = context.Companies.Find(entity.Id);
+                this.context.Entry(company).State = EntityState.Modified;
                 int updates = context.SaveChanges();
                 if(updates > 0)
                 {

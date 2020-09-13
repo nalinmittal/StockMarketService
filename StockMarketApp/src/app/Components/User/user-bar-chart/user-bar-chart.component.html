@@ -1,0 +1,43 @@
+<div class="container">
+  <table class="table table-bordered" border="1" style="width:300px;">
+    <tr>
+      <td>Company ID</td>
+      <td><input type="text" [(ngModel)]="this.item.CompanyId" class="form-control"></td>
+    </tr>
+    <tr>
+      <td>StockExchange ID</td>
+      <td><input type="text" [(ngModel)]="this.item.StockExchangeId" class="form-control"></td>
+    </tr>
+    <tr>
+      <td>From</td>
+      <td><input type="datetime-local" [(ngModel)]="this.item.from" class="form-control"></td>
+    </tr>
+    <tr>
+      <td>To</td>
+      <td><input type="datetime-local" [(ngModel)]="this.item.to" class="form-control"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="btn btn-info" >Get Charts</button>
+      </td>
+    </tr>
+    
+  </table>
+  <ul>
+      <p>
+      
+      </p>
+  </ul>
+</div>
+
+<div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>

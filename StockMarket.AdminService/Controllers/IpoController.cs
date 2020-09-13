@@ -36,7 +36,8 @@ namespace StockMarket.AdminService.Controllers
             return this.repository.Get(id);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet]
+        [Route("/search/{name}")]
         public IEnumerable<IpoDetailDto> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);

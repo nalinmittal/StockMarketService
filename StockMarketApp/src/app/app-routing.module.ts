@@ -9,6 +9,10 @@ import { UserCompanyComponent } from './Components/User/user-company/user-compan
 import { UserChartsComponent } from './Components/User/user-charts/user-charts.component';
 import { UserIpoComponent } from './Components/User/user-ipo/user-ipo.component';
 // import { AuthGuard } from './shared/auth.guard';
+import { AdminCompanyLandingComponent } from "./Components/Admin/Company/admin-company-landing/admin-company-landing.component";
+import { AdminIpoLandingComponent } from "./Components/Admin/Ipo/admin-ipo-landing/admin-ipo-landing.component";
+import { AdminExchangeLandingComponent } from "./Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component";
+import {UserBarChartComponent} from "./Components/User/user-bar-chart/user-bar-chart.component";
 
 const routes: Routes = [
   {path:'account',component:AccountLandingComponent,children:[
@@ -18,11 +22,18 @@ const routes: Routes = [
   {path:'',redirectTo:'account/login',pathMatch:'full'},
   {
     path: 'admin',
-    component: LandingComponent
+    component: LandingComponent,
+    children:[
+      {path:'company',component:AdminCompanyLandingComponent},
+      {path:'ipo',component:AdminIpoLandingComponent},
+      {path:'exchange',component:AdminExchangeLandingComponent}
+    ]
   },
   {path:'user',component:UserLandingComponent,children:[
       {path:'company',component:UserCompanyComponent},
-      {path:'charts',component:UserChartsComponent},
+      {path:'charts',component:UserChartsComponent,children:[
+        {path:'bar-chart',component:UserBarChartComponent}
+      ]},
       {path:'ipo',component:UserIpoComponent}
 
     ]}

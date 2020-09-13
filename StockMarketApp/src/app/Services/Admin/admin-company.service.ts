@@ -5,15 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class IpoDetailsService {
+export class AdminCompanyService 
+{
 
-  path:string="https://localhost:44354/api/ipodetail"
+  path:string = "http://localhost:1601/admin/company"
 
   constructor(private http:HttpClient) { }
 
-  GetIpoList() : Observable<any>
+  GetAll() : Observable<any>
   {
     return this.http.get(this.path)
-
   }
+
 }

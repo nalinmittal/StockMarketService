@@ -25,6 +25,12 @@ namespace StockMarket.UserService.Controllers
             return repository.Get();
         }
 
+        [HttpGet("{id}")]
+        public Company Get(int id)
+        {
+            return this.repository.Get(id);
+        }
+
         [HttpPost]
         public IActionResult Post([FromForm] Company company)
         {
