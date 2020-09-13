@@ -23,13 +23,14 @@ namespace StockMarket.AdminService
 
         public IConfiguration Configuration { get; }
 
-
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AccountContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
             services.AddControllers();
-            services.AddScoped<IAccountRepository<Account>, AccountRepository>();
+            services.AddScoped<IRepository<User>, AccountRepository>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -44,10 +45,9 @@ namespace StockMarket.AdminService
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"]))
                     };
                 });
-
         }
 
-
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.AccountService.Repositories
 {
-    public class AccountRepository : IAccountRepository<Account>
+    public class AccountRepository : IRepository<User>
     {
         private AccountContext context;
         private IConfiguration configuration;
@@ -23,22 +23,25 @@ namespace StockMarket.AccountService.Repositories
             this.context = context;
             this.configuration = configuration;
         }
-        public Tuple<bool, string> Login(string username, string password)
+
+
+        public Tuple<bool, TokenDetails> Login(string username, string password)
         {
             try
             {
-                Tuple<bool, string> result;
-                var account = context.AccountsUsers.FirstOrDefault(u => u.Username == username
+                Tuple<bool, TokenDetails> result;
+                var user = context.Users.FirstOrDefault(u => u.Username == username
                             && u.Password == password && u.Confirmed);
-                if (account == null)
+                if (user == null)
                 {
-                    result = new Tuple<bool, string>(false, "");
+                    result = new Tuple<bool, TokenDetails>(false, null);
                 }
                 else
                 {
-                    result = new Tuple<bool, string>(true, "1");
+                    var token = GenerateJwtToken(user);
+                    var temp = new TokenDetails(token, (int)user.UserType);
+                    result = new Tuple<bool, TokenDetails>(true, temp);
                 }
-                
                 return result;
             }
             catch (Exception ex)
@@ -46,19 +49,14 @@ namespace StockMarket.AccountService.Repositories
                 throw ex;
             }
         }
-/*
-        private object GenerateJwtToken(object account)
-        {
-            throw new NotImplementedException();
-        }
 
-        private string GenerateJwtToken(Account account)
+        private string GenerateJwtToken(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, account.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, account.UserType.ToString())
+                new Claim(ClaimTypes.Role, user.UserType.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
@@ -79,21 +77,18 @@ namespace StockMarket.AccountService.Repositories
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-*/
 
         public bool Logout()
         {
-            //cancel token
-
             return true;
         }
 
-        public bool Signup(Account entity)
+        public bool Signup(User entity)
         {
             try
             {
                 entity.Confirmed = true;
-                context.AccountsUsers.Add(entity);
+                context.Users.Add(entity);
                 int updates = context.SaveChanges();
                 if (updates > 0)
                 {
@@ -106,20 +101,17 @@ namespace StockMarket.AccountService.Repositories
                 return false;
             }
         }
-        public Account GetProfile(string token)
+
+
+        public bool UpdateProfile(User entity)
         {
-            return context.AccountsUsers.FirstOrDefault(u => u.Email == token);
+            throw new NotImplementedException();
         }
 
-        public bool UpdateProfile(Account entity)
+        public User GetProfile(ClaimsPrincipal currentUser)
         {
-            context.AccountsUsers.Update(entity);
-            int updates = context.SaveChanges();
-            if (updates > 0)
-            {
-                return true;
-            }
-            return false;
+            var email = currentUser.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub).Value;
+            return context.Users.FirstOrDefault(u => u.Email == email);
 
         }
     }
