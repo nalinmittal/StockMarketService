@@ -9,3 +9,4 @@ There are three microservices. User, Admin and Account.
 - An Ocelot gateway is used to communicate between the Angular JS UI(StockMarketApp) and the microservices.
 
 A preview of the SQL relational database structure is shown below.
+![SQL Database](/SQL_Database.png)
