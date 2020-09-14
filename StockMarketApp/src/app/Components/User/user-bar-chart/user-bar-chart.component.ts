@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StockPriceDto } from '../../../models/stock-price-dto';
 import {UserService} from '../../../services/user.service'
 import { StockPrice } from '../../../models/stock-price';
+import { Label, BaseChartDirective } from 'ng2-charts';
+
 
 
 @Component({
@@ -11,21 +13,24 @@ import { StockPrice } from '../../../models/stock-price';
 })
 export class UserBarChartComponent implements OnInit {
   item : StockPriceDto;
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   constructor(private service:UserService) { 
     this.item = new StockPriceDto();
   
   }
+  
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels :number [] =[];
+
+  public barChartLabels :number[]=[];
   public barChartType = 'line';
   public barChartLegend = true;
-  public ChartData : number [] =[];
+
   public barChartData = [
-    {data: this.ChartData, label: 'Charts'},
+    
   ];
   ngOnInit(): void {
   }
@@ -38,16 +43,27 @@ export class UserBarChartComponent implements OnInit {
       console.log(stockPriceList)
       for(let i=0; i<stockPriceList.length; i++){
 
-        labels.push(stockPriceList[i].Id);
-        console.log(stockPriceList[i].Id)
-        data.push(stockPriceList[i].CurrentPrice)
+        labels.push(stockPriceList[i].id);
+        //console.log(stockPriceList[i].id)
+        data.push(stockPriceList[i].currentPrice)
       }
       this.barChartLabels = labels;
-      this.ChartData = data;
-      console.log(labels)
-      console.log(data)
+      //this.ChartData = data;
+      var a = {data: data, label:'Chart'};
+      //this.barChartData.push(a);
+      this.Refresh(a);
+      //console.log(this.barChartLabels)
+      //console.log(this.barChartData[0].data)
+      
     },(err)=>{
       console.log(err.error)
     })
   }
+  public Refresh(a){
+    this.barChartData.push(a);
+    this.chart.chart.update();
+    //console.log("Please work")
+  }
+
+  
 }
