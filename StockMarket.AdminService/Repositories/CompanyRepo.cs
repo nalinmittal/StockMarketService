@@ -170,7 +170,7 @@ namespace StockMarket.AdminService.Repositories
             try
             {
                 Company company = context.Companies.Find(entity.Id);
-                this.context.Entry(company).State = EntityState.Modified;
+                this.context.Entry(company).CurrentValues.SetValues(entity);
                 int updates = context.SaveChanges();
                 if(updates > 0)
                 {

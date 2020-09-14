@@ -46,7 +46,7 @@ namespace StockMarket.AdminService.Controllers
 
         // POST api/<IpoController>
         [HttpPost]
-        public IActionResult Post([FromForm] IpoDetailDto ipo)
+        public IActionResult Post(IpoDetailDto ipo)
         {
             if (ModelState.IsValid)
             {
