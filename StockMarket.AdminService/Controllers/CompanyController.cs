@@ -69,7 +69,7 @@ namespace StockMarket.AdminService.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, CompanyDto company)
+        public IActionResult Put(long id, CompanyDto company)
         {
             if(ModelState.IsValid)
             {
