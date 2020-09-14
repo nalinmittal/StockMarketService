@@ -1,10 +1,10 @@
 export class IpoDetail {
     
-        public  Id : number
-        public  Pricepershare : number
-        public Totalnumberofshares : number
-        public Opendatetime : Date
-        public  Remarks : string
-        public  CompanyId : number
-        public StockExchangeId :string
+        public id : number
+        public pricepershare : number
+        public totalnumberofshares : number
+        public opendatetime : Date
+        public remarks : string
+        public companyId : number
+        public stockExchangeId :string
 }

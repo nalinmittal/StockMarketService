@@ -1,0 +1,34 @@
+
+<div class="container">
+    
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center; font-size: 15px;">{{exchange.stockexchange}}</th>
+            </tr>
+        </thead>
+        <tr>
+            <th>Name/Id</th>
+            <td>{{exchange.stockexchange}}</td>
+        </tr>   
+        <tr>
+            <th>Brief</th>
+            <td>{{exchange.brief}}</td>
+        </tr>
+        <tr>
+            <th>Contact Address</th>
+            <td>{{exchange.contactaddress}}</td>
+        </tr>
+        <tr>
+            <th>Remarks</th>
+            <td>{{exchange.remarks}}</td>
+        </tr>
+        <tr>
+            <th>Company Ids</th>
+            <td>{{exchange.companyIds}}</td>
+        </tr>
+    </table>
+</div>
+
+<button class="btn btn-info" [routerLink]="['/admin/exchange']">Back</button>
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IpoDetail } from '../../../../Models/ipo-detail'
+import { AdminService } from "../../../../Services/admin.service";
 
 @Component({
   selector: 'app-admin-ipo-landing',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminIpoLandingComponent implements OnInit {
 
-  constructor() { }
+  ipos:IpoDetail[];
+
+  constructor(private service:AdminService) { }
 
   ngOnInit(): void {
+    this.GetAll();
   }
 
+  public GetAll()
+  {
+    this.service.GetAllIpos().subscribe(
+      (ipos:IpoDetail[]) => 
+      {
+        this.ipos = ipos;
+        console.log(this.ipos)
+      },
+      (err) => {console.log(err)}
+      )
+  }
 }

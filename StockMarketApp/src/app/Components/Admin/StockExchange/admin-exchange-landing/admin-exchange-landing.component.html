@@ -1,1 +1,29 @@
-<p>admin-exchange-landing works!</p>
+<table class="table table-striped custom">
+    <thead class="thead-dark">
+    <tr>
+        <th>Name</th>
+        <th>Brief</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let exchange of exchanges">
+        <th>{{ exchange.stockexchange }}</th>
+        <th>{{ exchange.brief }}</th>
+        <th>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <a class="btn btn-primary" [routerLink]="['/admin/exchange/view',exchange.stockexchange]" routerLinkActive="router-link-active"> View </a>
+        </div>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="center">
+        <a class="btn btn-info" style="text-align: center;" [routerLink]="['/admin/exchange/add']" routerLinkActive="router-link-active">Add Stock Exchange</a>
+    </div>
+</div>
+
+
+
