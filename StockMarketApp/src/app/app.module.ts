@@ -21,8 +21,8 @@ import {UserService} from '../app/services/user.service'
 import { AdminIpoLandingComponent } from './Components/Admin/Ipo/admin-ipo-landing/admin-ipo-landing.component';
 import { AdminCompanyLandingComponent } from './Components/Admin/Company/admin-company-landing/admin-company-landing.component';
 import { AdminExchangeLandingComponent } from './Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component'
-import { ChartsModule } from "ng2-charts";
-import { UserBarChartComponent } from "./Components/User/user-bar-chart/user-bar-chart.component";
+import { ChartsModule } from 'ng2-charts';
+import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar-chart.component';
 import { AdminService } from './Services/admin.service';
 import { AdminCompanyViewComponent } from './Components/Admin/Company/admin-company-view/admin-company-view.component';
 import { AdminCompanyAddComponent } from './Components/Admin/Company/admin-company-add/admin-company-add.component';
