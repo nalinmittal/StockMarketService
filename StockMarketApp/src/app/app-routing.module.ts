@@ -19,6 +19,8 @@ import { AdminIpoViewComponent } from "./Components/Admin/Ipo/admin-ipo-view/adm
 import { AdminExchangeAddComponent  } from "./Components/Admin/StockExchange/admin-exchange-add/admin-exchange-add.component";
 import { AdminExchangeViewComponent } from "./Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component";
 import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
+import { UserBarChartComponent } from "./Components/User/user-bar-chart/user-bar-chart.component";
+
 
 const routes: Routes = [
   {path:'account',component:AccountLandingComponent,children:[
