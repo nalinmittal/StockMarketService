@@ -21,10 +21,17 @@ import {UserService} from '../app/services/user.service'
 import { AdminIpoLandingComponent } from './Components/Admin/Ipo/admin-ipo-landing/admin-ipo-landing.component';
 import { AdminCompanyLandingComponent } from './Components/Admin/Company/admin-company-landing/admin-company-landing.component';
 import { AdminExchangeLandingComponent } from './Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component'
-import { AdminCompanyService } from './Services/Admin/admin-company.service';
 import { ChartsModule } from 'ng2-charts';
 import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar-chart.component';
-
+import { AdminService } from './Services/admin.service';
+import { AdminCompanyViewComponent } from './Components/Admin/Company/admin-company-view/admin-company-view.component';
+import { AdminCompanyAddComponent } from './Components/Admin/Company/admin-company-add/admin-company-add.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AdminIpoViewComponent } from './Components/Admin/Ipo/admin-ipo-view/admin-ipo-view.component';
+import { AdminExchangeViewComponent } from './Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component';
+import { AdminExchangeAddComponent } from './Components/Admin/StockExchange/admin-exchange-add/admin-exchange-add.component';
+import { AdminIpoAddComponent } from './Components/Admin/Ipo/admin-ipo-add/admin-ipo-add.component';
+import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
 
 
 @NgModule({
@@ -42,6 +49,13 @@ import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar
     AdminIpoLandingComponent,
     AdminCompanyLandingComponent,
     AdminExchangeLandingComponent,
+    AdminCompanyViewComponent,
+    AdminCompanyAddComponent,
+    AdminIpoViewComponent,
+    AdminExchangeViewComponent,
+    AdminExchangeAddComponent,
+    AdminIpoAddComponent,
+    AdminCompanyUpdateComponent,
     UserBarChartComponent
   ],
   imports: [
@@ -49,6 +63,8 @@ import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     ChartsModule
   ],
 
@@ -60,7 +76,7 @@ import { UserBarChartComponent } from './Components/User/user-bar-chart/user-bar
     useClass: AuthInterceptor,
     multi: true
     },
-    AdminCompanyService
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

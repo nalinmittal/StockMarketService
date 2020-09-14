@@ -1,0 +1,42 @@
+
+<div class="container">
+    
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center; font-size: 15px;">IPO Details</th>
+            </tr>
+        </thead>
+        <tr>
+            <th>ID</th>
+            <td>{{ipo.id}}</td>
+        </tr>   
+        <tr>
+            <th>Company ID</th>
+            <td>{{ipo.companyId}}</td>
+        </tr>
+        <tr>
+            <th>Stock Exchange</th>
+            <td>{{ipo.stockExchangeId}}</td>
+        </tr>
+        <tr>
+            <th>Total number of shares</th>
+            <td>{{ipo.totalnumberofshares}}</td>
+        </tr>
+        <tr>
+            <th>Price per share</th>
+            <td>{{ipo.pricepershare}}</td>
+        </tr>
+        <tr>
+            <th>Remarks</th>
+            <td>{{ipo.remarks}}</td>
+        </tr>
+        <tr>
+            <th>Open Date:Time</th>
+            <td>{{ipo.opendatetime}}</td>
+        </tr>
+    </table>
+</div>
+
+<button class="btn btn-info" [routerLink]="['/admin/ipo']">Back</button>
+

@@ -1,1 +1,33 @@
-<p>admin-ipo-landing works!</p>
+<table class="table table-striped custom">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Company Id</th>
+        <th>Stock Exchange</th>
+        <th>Price per share</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let ipo of ipos">
+        <th>{{ ipo.id }}</th>
+        <th>{{ ipo.companyId }}</th>
+        <th>{{ ipo.stockExchangeId }}</th>
+        <th>{{ ipo.pricepershare }}</th>
+        <th>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <a class="btn btn-primary" [routerLink]="['/admin/ipo/view',ipo.id]" routerLinkActive="router-link-active"> View </a>
+        </div>
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="center">
+        <a class="btn btn-info" style="text-align: center;" [routerLink]="['/admin/ipo/add']" routerLinkActive="router-link-active">Add IPO</a>
+    </div>
+</div>
+
+
+

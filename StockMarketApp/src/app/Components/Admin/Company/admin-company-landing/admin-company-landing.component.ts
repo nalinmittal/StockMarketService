@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from "../../../../Models/company";
-import { AdminCompanyService } from "../../../../Services/Admin/admin-company.service";
+import { AdminService } from "../../../../Services/admin.service";
 
 @Component({
   selector: 'app-admin-company-landing',
@@ -12,7 +12,7 @@ export class AdminCompanyLandingComponent implements OnInit
 
   companies:Company[];
 
-  constructor(private service:AdminCompanyService) { this.companies = [] }
+  constructor(private service:AdminService) { this.companies = [] }
 
   ngOnInit(): void {
     this.GetAll()
@@ -20,17 +20,24 @@ export class AdminCompanyLandingComponent implements OnInit
 
   public GetAll()
   {
-    this.service.GetAll().subscribe(
+    this.service.GetAllCompanies().subscribe(
       (companies:Company[]) => 
       {
         this.companies = companies;
         console.log(this.companies)
       },
-      (err) =>
-      {
-        console.log(err)
-      }
+      (err) => {console.log(err)}
       )
+  }
+
+  public Delete(id:number)
+  {
+    this.service.DeleteCompany(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.GetAll();},
+      (err) => {console.log(err);}
+    )
   }
 
 }

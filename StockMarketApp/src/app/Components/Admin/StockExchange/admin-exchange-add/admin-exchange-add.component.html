@@ -1,0 +1,36 @@
+
+<div class="container"> 
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center;">Stock Exchange Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" [(ngModel)]="exchange.stockexchange"></td>
+            </tr>
+            <tr>
+                <th>Contact Address</th>
+                <td><input type="text" [(ngModel)]="exchange.contactaddress"></td>
+            </tr>
+            <tr>
+                <th>Brief</th>
+                <td><input type="text" [(ngModel)]="exchange.brief"></td>
+            </tr>
+            <tr>
+                <th>Remarks</th>
+                <td><input type="text" [(ngModel)]="exchange.remarks"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="container">
+    <a class="btn btn-info" (click)="AddExchange()">Add</a>
+    <a class="btn btn-info" [routerLink]="['/admin/exchange']" routerLinkActive="route-link-active">Back</a>
+</div>
+
+

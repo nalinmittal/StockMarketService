@@ -6,8 +6,6 @@
         <th>CEO</th>
         <th>Listed in</th>
         <th></th>
-        <th></th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -16,17 +14,23 @@
         <th>{{ company.companyname }}</th>
         <th>{{ company.ceo}}</th>
         <th>{{ company.stockExchangeIds }}</th>
-        <th><button class="btn btn-primary"> View </button></th>
+        <th>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <a class="btn btn-primary" [routerLink]="['/admin/company/view',company.id]" routerLinkActive="router-link-active"> View </a>
+            <a class="btn btn-primary" [routerLink]="['/admin/company/update',company.id]" routerLinkActive="router-link-active"> Update </a>
+            <button class="btn btn-primary" (click)="Delete(company.id)"> Delete </button>
+        </div>
+        </th>
+        <!-- <th><button class="btn btn-primary"> View </button></th>
         <th><button class="btn btn-primary"> Update </button></th>
-        <th><button class="btn btn-primary"> Delete </button></th>
+        <th><button class="btn btn-primary"> Delete </button></th> -->
     </tr>
     </tbody>
 </table>
 
-
 <div class="container">
     <div class="center">
-        <button class="btn btn-info" style="text-align: center;">Add Company</button>
+        <a class="btn btn-info" style="text-align: center;" [routerLink]="['/admin/company/add']" routerLinkActive="router-link-active">Add Company</a>
     </div>
 </div>
 

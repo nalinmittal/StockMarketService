@@ -1,0 +1,50 @@
+
+<div class="container"> 
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center;">Company Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Company Name</th>
+                <td><input type="text" [(ngModel)]="company.companyname" value={{company.companyname}}></td>
+            </tr>
+            <tr>
+                <th>CEO</th>
+                <td><input type="text" [(ngModel)]="company.ceo" value={{company.ceo}}></td>
+            </tr>
+            <tr>
+                <th>Turnover</th>
+                <td><input type="number" [(ngModel)]="company.turnover" value={{company.turnover}}></td>
+            </tr>
+            <tr>
+                <th>Board Of Directors</th>
+                <td><input type="text" [(ngModel)]="company.boardofdirectors" value={{company.boardofdirectors}}></td>
+            </tr>
+            <tr>
+                <th>Brief</th>
+                <td><input type="text" [(ngModel)]="company.brief" value={{company.brief}}></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<p>Stock Exchanges</p>
+<ng-multiselect-dropdown
+name="exchange"
+[placeholder] = "'Select Stock Exchange'"
+[data] = "exchanges"
+[settings] = "dropdownSettings"
+(onSelect) = "onItemSelect($event)"
+[(ngModel)] = "company.stockExchangeIds">
+</ng-multiselect-dropdown>
+
+<div class="container">
+
+<a class="btn btn-info" (click)="UpdateCompany()">Update</a>
+<a class="btn btn-info" [routerLink]="['/admin/company']" routerLinkActive="route-link-active">Back</a>
+    
+</div>
+

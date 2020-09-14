@@ -1,0 +1,37 @@
+
+<div class="container">
+    
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center; font-size: 15px;">{{company.companyname}}</th>
+            </tr>
+        </thead>
+        <tr>
+            <th>ID</th>
+            <td>{{company.id}}</td>
+        </tr>   
+        <tr>
+            <th>CEO</th>
+            <td>{{company.ceo}}</td>
+        </tr>
+        <tr>
+            <th>Turnover</th>
+            <td>{{company.turnover}}</td>
+        </tr>
+        <tr>
+            <th>Board of Directors</th>
+            <td>{{company.boardofdirectors}}</td>
+        </tr>
+        <tr>
+            <th>Brief</th>
+            <td>{{company.brief}}</td>
+        </tr>
+        <tr>
+            <th>Stock Exchanges</th>
+            <td>{{company.stockExchangeIds}}</td>
+        </tr>
+    </table>
+</div>
+
+<button class="btn btn-info" [routerLink]="['/admin/company']">Back</button>
