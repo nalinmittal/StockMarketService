@@ -21,7 +21,6 @@ import { AdminExchangeAddComponent  } from "./Components/Admin/StockExchange/adm
 import { AdminExchangeViewComponent } from "./Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component";
 import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
 
-
 const routes: Routes = [
   {path:'account',component:AccountLandingComponent,children:[
     {path:'login',component:LoginComponent},
