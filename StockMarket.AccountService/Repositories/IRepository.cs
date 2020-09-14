@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace StockMarket.AccountService.NewFolder1
 {
-    public interface IAccountRepository<T>
+    public interface IRepository<T>
     {
         bool Signup(T entity);
-        Tuple<bool, string> Login(string username, string password);
+        Tuple<bool, TokenDetails> Login(string username, string password);
         bool Logout();
-        T GetProfile(string token);
+
         bool UpdateProfile(T entity);
+        T GetProfile(ClaimsPrincipal currentUser);
     }
 }

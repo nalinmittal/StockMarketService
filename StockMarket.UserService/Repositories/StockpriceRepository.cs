@@ -85,16 +85,36 @@ namespace StockMarket.UserService.Repositories
 
         public IEnumerable<StockPrice> Search(StockPriceDto stockpricedto)
         {
+            /*
             var stockPrices = context.StockPrices.Where(s =>
-
+                
                  s.CompanyId == stockpricedto.CompanyId &&
 
                  s.StockExchangeId == stockpricedto.StockExchangeId &&
 
-                 Convert.ToDateTime(s.Date + ' ' + s.Time) >= stockpricedto.from &&
+                 Convert.ToDateTime(s.Date).Add(TimeSpan.Parse(s.Time)) >= Convert.ToDateTime(stockpricedto.from) &&
 
-                 Convert.ToDateTime(s.Date + ' ' + s.Time) <= stockpricedto.to);
+                 Convert.ToDateTime(s.Date).Add(TimeSpan.Parse(s.Time)) <= Convert.ToDateTime(stockpricedto.to));
             return stockPrices;
+                */
+            /*
+            var sp = from s in context.StockPrices
+                     where s.CompanyId == stockpricedto.CompanyId &&
+                    s.StockExchangeId == stockpricedto.StockExchangeId &&
+                    Convert.ToDateTime(s.Date + ' ' + s.Time) >= Convert.ToDateTime(stockpricedto.From) &&
+                    Convert.ToDateTime(s.Date + ' ' + s.Time) <= Convert.ToDateTime(stockpricedto.To)
+                     select s;
+            
+            return sp.ToList();
+            */
+            var stockPrices = context.StockPrices.AsEnumerable()
+                .Where(s => s.CompanyId == stockpricedto.CompanyId &&
+                 s.StockExchangeId == stockpricedto.StockExchangeId &&
+                 Convert.ToDateTime(s.Date).Add(TimeSpan.Parse(s.Time)) >= Convert.ToDateTime(stockpricedto.From) &&
+                 Convert.ToDateTime(s.Date).Add(TimeSpan.Parse(s.Time)) <= Convert.ToDateTime(stockpricedto.To))
+                .ToList();
+            return stockPrices;
+
         }
         public IEnumerable<StockPrice> Search(DateTime from, DateTime to, Sector sector)
         {

@@ -28,17 +28,26 @@ namespace StockMarket.AdminService.Controllers
             return this.repository.Get();
         }
 
-        [HttpGet("{id}")]
-        public StockExchangeDto Get(int id)
+        [HttpGet]
+        [Route("{id}")]
+        public StockExchangeDto Get(string id)
         {
             return this.repository.Get(id);
         }
 
-        [HttpGet("{name}")]
-        public IEnumerable<StockExchangeDto> Get(string exchangeName)
+        [HttpGet]
+        [Route("names")]
+        public IEnumerable<string> GetNamesController()
         {
-            return this.repository.GetMatching(exchangeName);
+            return this.repository.GetNames();
         }
+
+        //[HttpGet]
+        //[Route("/search/{name}")]
+        //public IEnumerable<StockExchangeDto> Get(string exchangeName)
+        //{
+        //    return this.repository.GetMatching(exchangeName);
+        //}
 
         [HttpPost]
         public IActionResult Post([FromForm] StockExchangeDto exchange)

@@ -13,5 +13,6 @@ namespace StockMarket.AdminService.Repositories
         IEnumerable<T> Get();
         T Get(object key);
         IEnumerable<T> GetMatching(string name);
+        IEnumerable<string> GetNames();
     }
 }

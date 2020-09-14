@@ -13,7 +13,6 @@ import { AdminCompanyLandingComponent } from "./Components/Admin/Company/admin-c
 import { AdminIpoLandingComponent } from "./Components/Admin/Ipo/admin-ipo-landing/admin-ipo-landing.component";
 import { AdminExchangeLandingComponent } from "./Components/Admin/StockExchange/admin-exchange-landing/admin-exchange-landing.component";
 import {UserBarChartComponent} from "./Components/User/user-bar-chart/user-bar-chart.component";
-
 import { AdminCompanyViewComponent } from "./Components/Admin/Company/admin-company-view/admin-company-view.component"
 import { AdminCompanyAddComponent } from "./Components/Admin/Company/admin-company-add/admin-company-add.component"
 import { AdminIpoAddComponent } from "./Components/Admin/Ipo/admin-ipo-add/admin-ipo-add.component";
@@ -21,6 +20,7 @@ import { AdminIpoViewComponent } from "./Components/Admin/Ipo/admin-ipo-view/adm
 import { AdminExchangeAddComponent  } from "./Components/Admin/StockExchange/admin-exchange-add/admin-exchange-add.component";
 import { AdminExchangeViewComponent } from "./Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component";
 import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
+
 
 const routes: Routes = [
   {path:'account',component:AccountLandingComponent,children:[
@@ -46,7 +46,9 @@ const routes: Routes = [
   },
   {path:'user',component:UserLandingComponent,children:[
       {path:'company',component:UserCompanyComponent},
-      {path:'charts',component:UserChartsComponent},
+      {path:'charts',component:UserChartsComponent,children:[
+        {path:'bar-chart',component:UserBarChartComponent}
+      ]},
       {path:'ipo',component:UserIpoComponent}
 
     ]}

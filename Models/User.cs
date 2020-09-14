@@ -7,9 +7,8 @@ using Models;
 
 namespace Models
 {
-    public class Account
+    public class User
     {
-        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(30)]
@@ -17,14 +16,13 @@ namespace Models
         [Required]
         [StringLength(50, MinimumLength = 6)]
         public string Password { get; set; }
-        [Required]
+        [StringLength(30)]
         public UserType UserType { get; set; }
+        [StringLength(30)]
         [EmailAddress]
-        [Required]
         public string Email { get; set; }
-        [Required]
+        [StringLength(30)]
         public long Mobile { get; set; }
         public bool Confirmed { get; set; }
-
     }
 }

@@ -61,40 +61,28 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
-        public bool Delete(CompanyDto entity)
+        public bool Delete(long key)
         {
             try
             {
-                var company = new Company
+                var company = context.Companies.Find(key);
+                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId == key))
                 {
-                    Id = entity.Id,
-                    Companyname = entity.Companyname,
-                    Turnover = entity.Turnover,
-                    Ceo = entity.Ceo,
-                    Boardofdirectors = entity.Boardofdirectors,
-                    Brief = entity.Brief,
-                    //CompanyStockExchanges = new List<CompanyStockExchange>()
-                };
-                context.Remove(company);
+                    context.CompanyStockExchanges.Remove(companyStockExchange);
+                }
+                context.SaveChanges();
+                context.Companies.Remove(company);
                 int updates = context.SaveChanges();
                 if(updates==0)
                 {
                     return false;
                 }
-                foreach (var companyStockExchange in context.CompanyStockExchanges.Where(c => c.CompanyId==entity.Id))
-                {
-                    context.CompanyStockExchanges.Remove(companyStockExchange);
-                }
-                int updates2 = context.SaveChanges();
-                if (updates2 > 0)
-                {
-                    return true;
-                }
-                return false;
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw ex;
+                //return false;
             }
         }
 
@@ -142,6 +130,16 @@ namespace StockMarket.AdminService.Repositories
             return companyDto;
         }
 
+        public IEnumerable<string> GetNames()
+        {
+            var companies = new List<string>();
+            foreach( var company in context.Companies)
+            {
+                companies.Add(company.Companyname);
+            }
+            return companies;
+        }
+
         public IEnumerable<CompanyDto> GetMatching(string name)
         {
             var companies = this.context.Companies.Where(c => c.Companyname.Contains(name));
@@ -171,7 +169,8 @@ namespace StockMarket.AdminService.Repositories
         {
             try
             {
-                this.context.Entry(entity).State = EntityState.Modified;
+                Company company = context.Companies.Find(entity.Id);
+                this.context.Entry(company).State = EntityState.Modified;
                 int updates = context.SaveChanges();
                 if(updates > 0)
                 {

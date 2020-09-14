@@ -18,6 +18,6 @@ namespace StockMarket.AccountService.Models
         {
         }
 
-        public virtual DbSet<Account> AccountsUsers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

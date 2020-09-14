@@ -55,7 +55,8 @@ import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-co
     AdminExchangeViewComponent,
     AdminExchangeAddComponent,
     AdminIpoAddComponent,
-    AdminCompanyUpdateComponent
+    AdminCompanyUpdateComponent,
+    UserBarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +64,8 @@ import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    ChartsModule
   ],
 
   providers: [AccountService, UserService,

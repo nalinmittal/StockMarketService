@@ -33,20 +33,28 @@ namespace StockMarket.AdminService.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public CompanyDto Get(int id)
+        public CompanyDto Get(long id)
         {
             return this.repository.Get(id);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet]
+        [Route("names")]
+        public IEnumerable<string> GetNamesController()
+        {
+            return this.repository.GetNames();
+        }
+
+
+        [HttpGet]
+        [Route("/search/{name}")]
         public IEnumerable<CompanyDto> Get(string companyName)
         {
             return this.repository.GetMatching(companyName);
         }
 
-        // POST api/<CompanyController>
         [HttpPost]
-        public IActionResult Post([FromForm] CompanyDto company)
+        public IActionResult Post(CompanyDto company)
         {
             if(ModelState.IsValid)
             {
@@ -61,7 +69,7 @@ namespace StockMarket.AdminService.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] CompanyDto company)
+        public IActionResult Put(int id, CompanyDto company)
         {
             if(ModelState.IsValid)
             {
@@ -85,14 +93,14 @@ namespace StockMarket.AdminService.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(long id)
         {
             var company = this.repository.Get(id);
             if(company==null)
             {
                 return NotFound();
             }
-            var isDeleted = this.repository.Delete(company);
+            var isDeleted = this.repository.Delete(id);
             if(isDeleted)
             {
                 return Ok("Company deleted succesfully");

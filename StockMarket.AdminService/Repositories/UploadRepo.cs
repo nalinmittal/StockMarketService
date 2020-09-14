@@ -115,9 +115,9 @@ namespace StockMarket.AdminService.Repositories
 
                             {
 
-                                //CompanyId = int.Parse(r[0].ToString().Trim()),
+                                CompanyId = long.Parse(r[0].ToString().Trim()),
 
-                                //StockExchangeId = int.Parse(r[1].ToString().Trim()),
+                                StockExchangeId = r[1].ToString().Trim(),
 
                                 CurrentPrice = float.Parse(r[2].ToString().Trim()),
 

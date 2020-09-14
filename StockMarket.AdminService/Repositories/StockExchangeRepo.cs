@@ -46,6 +46,16 @@ namespace StockMarket.AdminService.Repositories
             }
         }
 
+        public IEnumerable<string> GetNames()
+        {
+            var exchanges = new List<string>();
+            foreach (var exchange in this.context.StockExchanges)
+            {
+                exchanges.Add(exchange.Stockexchange);
+            }
+            return exchanges;
+        }
+
         public IEnumerable<StockExchangeDto> Get()
         {
             var exchanges = new List<StockExchangeDto>();
