@@ -31,11 +31,15 @@ namespace StockMarket.ApiGateway
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options =>
-       options.AllowAnyOrigin()
+                options.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 );
-            }); services.AddControllers();
+            });
+
+
+
+            services.AddControllers();
             services.AddOcelot(Configuration);
         }
 
@@ -53,7 +57,6 @@ namespace StockMarket.ApiGateway
 
             app.UseAuthorization();
             app.UseCors("AllowOrigin");
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

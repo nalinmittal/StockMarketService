@@ -1,26 +1,26 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/account",
+      "DownstreamPathTemplate": "/api/Account",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44346
+          "Port": 44361
         }
       ],
-      "UpstreamPathTemplate": "/accountservice"
+      "UpstreamPathTemplate": "/AccountService"
     },
     {
-      "DownstreamPathTemplate": "/api/account/{url}",
+      "DownstreamPathTemplate": "/api/Account/{url}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44346
+          "Port": 44361
         }
       ],
-      "UpstreamPathTemplate": "/accountervice/{url}"
+      "UpstreamPathTemplate": "/AccountService/{url}"
     },
     {
       "DownstreamPathTemplate": "/api/company/{url}",
