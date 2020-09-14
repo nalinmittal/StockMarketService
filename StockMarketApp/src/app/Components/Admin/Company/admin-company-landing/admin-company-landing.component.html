@@ -17,7 +17,7 @@
         <th>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <a class="btn btn-primary" [routerLink]="['/admin/company/view',company.id]" routerLinkActive="router-link-active"> View </a>
-            <button class="btn btn-primary"> Update </button>
+            <a class="btn btn-primary" [routerLink]="['/admin/company/update',company.id]" routerLinkActive="router-link-active"> Update </a>
             <button class="btn btn-primary" (click)="Delete(company.id)"> Delete </button>
         </div>
         </th>

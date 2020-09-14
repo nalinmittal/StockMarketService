@@ -29,6 +29,7 @@ import { AdminIpoViewComponent } from './Components/Admin/Ipo/admin-ipo-view/adm
 import { AdminExchangeViewComponent } from './Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component';
 import { AdminExchangeAddComponent } from './Components/Admin/StockExchange/admin-exchange-add/admin-exchange-add.component';
 import { AdminIpoAddComponent } from './Components/Admin/Ipo/admin-ipo-add/admin-ipo-add.component';
+import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { AdminIpoAddComponent } from './Components/Admin/Ipo/admin-ipo-add/admin
     AdminIpoViewComponent,
     AdminExchangeViewComponent,
     AdminExchangeAddComponent,
-    AdminIpoAddComponent
+    AdminIpoAddComponent,
+    AdminCompanyUpdateComponent
   ],
   imports: [
     BrowserModule,

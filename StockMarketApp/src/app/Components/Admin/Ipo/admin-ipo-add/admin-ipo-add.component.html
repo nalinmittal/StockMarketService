@@ -1,1 +1,48 @@
-<p>admin-ipo-add works!</p>
+
+<div class="container"> 
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="2" style="text-align: center;">IPO Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Company Name</th>
+                <td><select [(ngModel)]="ipo.companyId"> 
+                    <option *ngFor="let company of companies" value={{company.id}}>{{company.companyname}}</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th>Stock Exchanges</th>
+                <td><select [(ngModel)]="ipo.stockExchangeId">
+                        <option *ngFor="let exchange of exchanges" value={{exchange}}>{{exchange}}</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th>Total number of shares</th>
+                <td><input type="number" [(ngModel)]="ipo.totalnumberofshares"></td>
+            </tr>
+            <tr>
+                <th>Price per share</th>
+                <td><input type="number" [(ngModel)]="ipo.pricepershare"></td>
+            </tr>
+            <tr>
+                <th>Open Date</th>
+                <td><input type="date" [(ngModel)]="ipo.opendatetime"></td>
+            </tr>
+            <tr>
+                <th>Remarks</th>
+                <td><input type="text" [(ngModel)]="ipo.remarks"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div class="container">
+    <a class="btn btn-info" (click)="AddIpo()">Add</a>
+    <a class="btn btn-info" [routerLink]="['/admin/ipo']" routerLinkActive="route-link-active">Back</a>
+</div>
+

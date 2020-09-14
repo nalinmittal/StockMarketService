@@ -42,6 +42,11 @@ export class AdminService {
     return this.http.get(this.companyPath+"/names");
   }
 
+  public UpdateCompany(id:number,company:Company) : Observable<any>
+  {
+    return this.http.put(this.companyPath+"/"+id,company);
+  }
+
   public GetAllIpos() : Observable<any>
   {
     return this.http.get(this.ipoPath);

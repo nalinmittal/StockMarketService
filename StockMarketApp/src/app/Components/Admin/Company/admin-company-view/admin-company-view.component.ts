@@ -19,7 +19,6 @@ export class AdminCompanyViewComponent implements OnInit {
     this.id = this._Activatedroute.snapshot.paramMap.get("id");
     this.View(this.id);
   }
-
   
   public View(id:number)
   {

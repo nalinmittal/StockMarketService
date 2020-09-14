@@ -18,6 +18,7 @@ import { AdminIpoAddComponent } from "./Components/Admin/Ipo/admin-ipo-add/admin
 import { AdminIpoViewComponent } from "./Components/Admin/Ipo/admin-ipo-view/admin-ipo-view.component";
 import { AdminExchangeAddComponent  } from "./Components/Admin/StockExchange/admin-exchange-add/admin-exchange-add.component";
 import { AdminExchangeViewComponent } from "./Components/Admin/StockExchange/admin-exchange-view/admin-exchange-view.component";
+import { AdminCompanyUpdateComponent } from './Components/Admin/Company/admin-company-update/admin-company-update.component';
 
 const routes: Routes = [
   {path:'account',component:AccountLandingComponent,children:[
@@ -32,6 +33,7 @@ const routes: Routes = [
       {path:'company',component:AdminCompanyLandingComponent},
       {path:'company/add',component:AdminCompanyAddComponent},
       {path:'company/view/:id',component:AdminCompanyViewComponent},
+      {path:'company/update/:id',component:AdminCompanyUpdateComponent},
       {path:'ipo',component:AdminIpoLandingComponent},
       {path:'ipo/add',component:AdminIpoAddComponent},
       {path:'ipo/view/:id',component:AdminIpoViewComponent},

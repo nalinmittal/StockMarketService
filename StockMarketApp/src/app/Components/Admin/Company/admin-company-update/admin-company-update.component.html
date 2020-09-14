@@ -9,23 +9,23 @@
         <tbody>
             <tr>
                 <th>Company Name</th>
-                <td><input type="text" [(ngModel)]="company.companyname"></td>
+                <td><input type="text" [(ngModel)]="company.companyname" value={{company.companyname}}></td>
             </tr>
             <tr>
                 <th>CEO</th>
-                <td><input type="text" [(ngModel)]="company.ceo"></td>
+                <td><input type="text" [(ngModel)]="company.ceo" value={{company.ceo}}></td>
             </tr>
             <tr>
                 <th>Turnover</th>
-                <td><input type="number" [(ngModel)]="company.turnover"></td>
+                <td><input type="number" [(ngModel)]="company.turnover" value={{company.turnover}}></td>
             </tr>
             <tr>
                 <th>Board Of Directors</th>
-                <td><input type="text" [(ngModel)]="company.boardofdirectors"></td>
+                <td><input type="text" [(ngModel)]="company.boardofdirectors" value={{company.boardofdirectors}}></td>
             </tr>
             <tr>
                 <th>Brief</th>
-                <td><input type="text" [(ngModel)]="company.brief"></td>
+                <td><input type="text" [(ngModel)]="company.brief" value={{company.brief}}></td>
             </tr>
         </tbody>
     </table>
@@ -43,7 +43,7 @@ name="exchange"
 
 <div class="container">
 
-<a class="btn btn-info" (click)="AddCompany()">Add</a>
+<a class="btn btn-info" (click)="UpdateCompany()">Update</a>
 <a class="btn btn-info" [routerLink]="['/admin/company']" routerLinkActive="route-link-active">Back</a>
     
 </div>
