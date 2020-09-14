@@ -1,6 +1,6 @@
 export class StockPriceDto {
-    public from : Date
-    public to : Date
+    public from : string
+    public to : string
     public CompanyId : number
     public StockExchangeId :string
 }

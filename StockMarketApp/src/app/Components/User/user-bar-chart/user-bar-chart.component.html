@@ -10,15 +10,16 @@
     </tr>
     <tr>
       <td>From</td>
-      <td><input type="datetime-local" [(ngModel)]="this.item.from" class="form-control"></td>
+      <td><input type="date" [(ngModel)]="this.item.from" class="form-control"></td>
     </tr>
     <tr>
       <td>To</td>
-      <td><input type="datetime-local" [(ngModel)]="this.item.to" class="form-control"></td>
+      <td><input type="date" [(ngModel)]="this.item.to" class="form-control"></td>
     </tr>
     <tr>
       <td colspan="2">
-        <button class="btn btn-info" >Get Charts</button>
+        <button class="btn btn-info" (click)="GetStockPriceList()">Get Charts</button>
+        
       </td>
     </tr>
     
@@ -31,7 +32,7 @@
 </div>
 
 <div>
-    <div style="display: block">
+    <div class="chart" *ngIf="barChartData.length>1" style="display: block">
       <canvas baseChart
               [datasets]="barChartData"
               [labels]="barChartLabels"
@@ -41,3 +42,4 @@
       </canvas>
     </div>
   </div>
+  

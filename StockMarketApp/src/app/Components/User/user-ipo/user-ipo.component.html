@@ -2,7 +2,7 @@
 <ul>
     <li *ngFor="let ipoDetail of ipoDetails">
       <p>
-        {{ ipoDetail.id }} • {{ ipoDetail.pricepershare }} • {{ ipoDetail.opendatetime | date}}
+        Company Id : {{ ipoDetail.companyid }} • Price per share {{ ipoDetail.pricepershare }} • Issue date {{ ipoDetail.opendatetime | date}}
       </p>
     </li>
 </ul>

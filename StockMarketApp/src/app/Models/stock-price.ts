@@ -1,8 +1,8 @@
 export class StockPrice {
-    public Id : number
-    public CurrentPrice : number
-    public Date : string
-    public Time : string
-    public CompanyId : number
-    public StockExchangeId : string
+    public id : number
+    public currentPrice : number
+    public date : string
+    public time : string
+    public companyId : number
+    public stockExchangeId : string
 }

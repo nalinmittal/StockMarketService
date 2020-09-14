@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StockPriceDto } from '../../../models/stock-price-dto';
+import {UserService} from '../../../services/user.service'
+import { StockPrice } from '../../../models/stock-price';
+import { Label, BaseChartDirective } from 'ng2-charts';
+
+
 
 @Component({
   selector: 'app-user-bar-chart',
@@ -8,29 +13,57 @@ import { StockPriceDto } from '../../../models/stock-price-dto';
 })
 export class UserBarChartComponent implements OnInit {
   item : StockPriceDto;
-  constructor() { 
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+
+  constructor(private service:UserService) { 
     this.item = new StockPriceDto();
+  
   }
+  
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = false;
+
+  public barChartLabels :number[]=[];
+  public barChartType = 'line';
+  public barChartLegend = true;
+
   public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    
   ];
   ngOnInit(): void {
   }
   public GetStockPriceList()
   {
-    this.service.GetCompany(this.item).subscribe((item:Company)=>{
-      this.item=item[0]
-      console.log(this.item)
+    let labels : number[] = [];
+    let data : number[] = [];
+    this.service.GetStockPriceList(this.item).subscribe((stockPriceList : StockPrice[])=>{
+      
+      console.log(stockPriceList)
+      for(let i=0; i<stockPriceList.length; i++){
+
+        labels.push(stockPriceList[i].id);
+        //console.log(stockPriceList[i].id)
+        data.push(stockPriceList[i].currentPrice)
+      }
+      this.barChartLabels = labels;
+      //this.ChartData = data;
+      var a = {data: data, label:'Chart'};
+      //this.barChartData.push(a);
+      this.Refresh(a);
+      //console.log(this.barChartLabels)
+      //console.log(this.barChartData[0].data)
+      
     },(err)=>{
       console.log(err.error)
     })
   }
+  public Refresh(a){
+    this.barChartData.push(a);
+    this.chart.chart.update();
+    //console.log("Please work")
+  }
+
+  
 }
