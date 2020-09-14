@@ -38,6 +38,13 @@ namespace StockMarket.AdminService.Controllers
             return this.repository.Get(id);
         }
 
+        [HttpGet]
+        [Route("names")]
+        public IEnumerable<string> GetNamesController()
+        {
+            return this.repository.GetNames();
+        }
+
 
         [HttpGet]
         [Route("/search/{name}")]
@@ -47,7 +54,7 @@ namespace StockMarket.AdminService.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromForm] CompanyDto company)
+        public IActionResult Post(CompanyDto company)
         {
             if(ModelState.IsValid)
             {
@@ -62,7 +69,7 @@ namespace StockMarket.AdminService.Controllers
 
         // PUT api/<CompanyController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] CompanyDto company)
+        public IActionResult Put(int id, CompanyDto company)
         {
             if(ModelState.IsValid)
             {

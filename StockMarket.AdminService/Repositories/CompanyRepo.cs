@@ -130,6 +130,16 @@ namespace StockMarket.AdminService.Repositories
             return companyDto;
         }
 
+        public IEnumerable<string> GetNames()
+        {
+            var companies = new List<string>();
+            foreach( var company in context.Companies)
+            {
+                companies.Add(company.Companyname);
+            }
+            return companies;
+        }
+
         public IEnumerable<CompanyDto> GetMatching(string name)
         {
             var companies = this.context.Companies.Where(c => c.Companyname.Contains(name));

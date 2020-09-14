@@ -83,6 +83,17 @@ namespace StockMarket.AdminService.Repositories
             return ipoDto;
         }
 
+        public IEnumerable<string> GetNames()
+        {
+            var ipos = new List<string>();
+            foreach( var ipo in context.Ipos)
+            {
+                ipos.Add(ipo.StockExchangeId);
+            }
+            return ipos;
+        }
+
+
         IEnumerable<IpoDetailDto> IRepo<IpoDetailDto>.GetMatching(string name)
         {
             var companies = context.Companies.Where(c => c.Companyname.Contains(name));
