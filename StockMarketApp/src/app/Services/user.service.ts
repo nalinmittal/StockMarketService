@@ -22,7 +22,7 @@ export class UserService {
 
   GetStockPriceList(item : StockPriceDto) : Observable<any>
   {
-    return this.http.get(this.pathStockPrice+"?to="+item.to+"&from="+item.from+"&CompanyId="+item.CompanyId+"&StockExchangeId="+item.StockExchangeId);
+    return this.http.get(this.pathStockPrice+"/"+item.to+"/"+item.from+"/"+item.CompanyId+"/"+item.StockExchangeId);
 
   }
 

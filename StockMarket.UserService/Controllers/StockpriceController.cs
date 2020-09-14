@@ -20,6 +20,12 @@ namespace StockMarket.UserService.Controllers
             this.repository = repository;
         }
 
+        [HttpGet]
+        [Route("{To}/{From}")]
+        public int Get(int To, string From)
+        {
+            return To;
+        }
 
         [HttpPost]
         public IActionResult Post([FromForm] StockPrice stockprice)
@@ -75,16 +81,17 @@ namespace StockMarket.UserService.Controllers
             }
             return StatusCode(500, "Internal Server Error");
         }
-
-        [HttpGet("{To}/{From}/{CompanyId}/{StockExchangeId}")]
-        public IEnumerable<StockPrice> Get([FromQuery] string To, string From, long CompanyId, string StockExchangeId)
+        [HttpGet]
+        [Route("chart/{To}/{From}/{CompanyId}/{StockExchangeId}")]
+        public IEnumerable<StockPrice> Get( string To, string From, long CompanyId, string StockExchangeId)
         {
-            StockPriceDto sdto = new StockPriceDto();
-            sdto.To = To;
-            sdto.From = From;
-            sdto.CompanyId = CompanyId;
-            sdto.StockExchangeId = StockExchangeId;
-            return repository.Search(sdto);
+            StockPriceDto stockPriceDto = new StockPriceDto();
+            stockPriceDto.To = To;
+            stockPriceDto.From = From;
+            stockPriceDto.StockExchangeId = StockExchangeId;
+            stockPriceDto.CompanyId = CompanyId;
+
+            return repository.Search(stockPriceDto);
         }
 
       

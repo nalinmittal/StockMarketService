@@ -3,6 +3,7 @@ import { StockPriceDto } from '../../../models/stock-price-dto';
 import {UserService} from '../../../services/user.service'
 import { StockPrice } from '../../../models/stock-price';
 
+
 @Component({
   selector: 'app-user-bar-chart',
   templateUrl: './user-bar-chart.component.html',
@@ -10,27 +11,41 @@ import { StockPrice } from '../../../models/stock-price';
 })
 export class UserBarChartComponent implements OnInit {
   item : StockPriceDto;
+
   constructor(private service:UserService) { 
     this.item = new StockPriceDto();
+  
   }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = false;
+  public barChartLabels :number [] =[];
+  public barChartType = 'line';
+  public barChartLegend = true;
+  public ChartData : number [] =[];
   public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: this.ChartData, label: 'Charts'},
   ];
   ngOnInit(): void {
   }
   public GetStockPriceList()
   {
+    let labels : number[] = [];
+    let data : number[] = [];
     this.service.GetStockPriceList(this.item).subscribe((stockPriceList : StockPrice[])=>{
       
       console.log(stockPriceList)
+      for(let i=0; i<stockPriceList.length; i++){
+
+        labels.push(stockPriceList[i].Id);
+        console.log(stockPriceList[i].Id)
+        data.push(stockPriceList[i].CurrentPrice)
+      }
+      this.barChartLabels = labels;
+      this.ChartData = data;
+      console.log(labels)
+      console.log(data)
     },(err)=>{
       console.log(err.error)
     })
