@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockPriceDto } from '../../../models/stock-price-dto';
+import {UserService} from '../../../services/user.service'
+import { StockPrice } from '../../../models/stock-price';
 
 @Component({
   selector: 'app-user-bar-chart',
@@ -8,7 +10,7 @@ import { StockPriceDto } from '../../../models/stock-price-dto';
 })
 export class UserBarChartComponent implements OnInit {
   item : StockPriceDto;
-  constructor() { 
+  constructor(private service:UserService) { 
     this.item = new StockPriceDto();
   }
   public barChartOptions = {
@@ -26,9 +28,9 @@ export class UserBarChartComponent implements OnInit {
   }
   public GetStockPriceList()
   {
-    this.service.GetCompany(this.item).subscribe((item:Company)=>{
-      this.item=item[0]
-      console.log(this.item)
+    this.service.GetStockPriceList(this.item).subscribe((stockPriceList : StockPrice[])=>{
+      
+      console.log(stockPriceList)
     },(err)=>{
       console.log(err.error)
     })

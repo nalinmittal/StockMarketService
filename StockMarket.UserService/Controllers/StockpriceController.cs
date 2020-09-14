@@ -76,10 +76,15 @@ namespace StockMarket.UserService.Controllers
             return StatusCode(500, "Internal Server Error");
         }
 
-        [HttpGet("/api/stockprice/chart")]
-        public IEnumerable<StockPrice> Get(StockPriceDto stockpricedto)
+        [HttpGet("{To}/{From}/{CompanyId}/{StockExchangeId}")]
+        public IEnumerable<StockPrice> Get([FromQuery] string To, string From, long CompanyId, string StockExchangeId)
         {
-            return repository.Search(stockpricedto);
+            StockPriceDto sdto = new StockPriceDto();
+            sdto.To = To;
+            sdto.From = From;
+            sdto.CompanyId = CompanyId;
+            sdto.StockExchangeId = StockExchangeId;
+            return repository.Search(sdto);
         }
 
       

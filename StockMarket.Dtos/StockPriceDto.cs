@@ -7,7 +7,7 @@ namespace StockMarket.Dtos
     {
         public string To { get; set; }
         public string From { get; set; }
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         public string StockExchangeId { get; set; }
     }
 }
