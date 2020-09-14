@@ -50,7 +50,7 @@ namespace StockMarket.AdminService.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Post([FromForm] StockExchangeDto exchange)
+        public IActionResult Post(StockExchangeDto exchange)
         {
             if (ModelState.IsValid)
             {
